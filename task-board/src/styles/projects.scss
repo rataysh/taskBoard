@@ -1,0 +1,22 @@
+/** @format */
+// @import-normalize;
+@import "./varCSS";
+
+.wrapper {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: 100%;
+    background-color: $background-main;
+}
+
+.header{
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    font-size:xx-large;
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid white;
+}

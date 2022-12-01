@@ -1,0 +1,51 @@
+@import "./varCSS";
+
+$bg-color: #0000A1;
+$link-text-color: #fff;
+$border-radius: 10px;
+$overlay-color: $blue-color;
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  color: $link-text-color;
+  text-transform: capitalize;
+  background-color: $bg-color;
+  font-size: 18px;
+  width: 15rem;
+  padding: 20px 0px;
+  border-radius: $border-radius;
+  overflow: hidden;
+  border: 1px;
+}
+
+.effect.effect-2 {
+  transition: all 0.2s linear 0s;
+  
+  &:before {
+    content: "+";
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: $overlay-color;
+    border-radius: 0px $border-radius $border-radius 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+  }
+
+  &:hover {
+    text-indent: -30px;
+    
+    &:before {
+      right: 0;
+      text-indent: 0px;
+    }
+  }
+}
