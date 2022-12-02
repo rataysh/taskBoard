@@ -1,0 +1,44 @@
+/** @format */
+@import "../../styles/varCSS.scss";
+
+.footer {
+    padding: 2.5rem;
+    background-color: $light-color;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: black;
+            display: flex;
+        }
+    }
+}
+
+.aboutDev {
+    transition: all 0.2s linear 0s;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    padding-bottom: 0.5rem;
+
+    a {
+        display: flex;
+        font-size: x-large;
+        transition-property: all;
+        transition-duration: 200ms;
+        margin-left: 0.25rem;
+        
+            
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
