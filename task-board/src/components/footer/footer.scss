@@ -4,6 +4,8 @@
 .footer {
     padding: 2.5rem;
     background-color: $light-color;
+    // padding-bottom: 1rem;
+    // margin-top: 0.25rem; 
     div {
         display: flex;
         flex-direction: column;
@@ -14,6 +16,7 @@
             font-weight: 500;
             color: black;
             display: flex;
+            padding-top: 0.5rem;
         }
     }
 }
@@ -28,6 +31,7 @@
     justify-items: center;
     align-self: center;
     padding-bottom: 0.5rem;
+    padding-top: 1rem;
 
     a {
         display: flex;

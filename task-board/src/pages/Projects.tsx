@@ -14,7 +14,8 @@ export const Projects: React.FC = () => {
                 <header className='header'>Task Board</header>
                 <main className='main'>
                     <AddNewProject />
-                    <div className='projectsBox'>
+                    <div className='projectsBox'
+                    >
                         {dataProject.map((projectProps) => (
                             <EachProject
                                 projectProps={projectProps}

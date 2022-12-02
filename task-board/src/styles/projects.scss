@@ -19,18 +19,10 @@
 }
 
 .wrapper {
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // width: 100vw;
-    // height: 100vh;
-    // background-size: 100%;
-    // padding-left: 1rem;
-    // padding-right: 1rem;
 }
 
 .header {
@@ -47,6 +39,7 @@
     margin-bottom: 10rem;
     margin-left: 2rem;
     margin-right: 2rem;
+    margin-top: 1rem;
 }
 
 .projectsBox {
@@ -55,7 +48,7 @@
     margin-right: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 1rem;
+    grid-column-gap: 0.5rem;
 }
 
 $textColorProjectCard: black;
@@ -66,9 +59,7 @@ $textColorProjectCard: black;
     flex-direction: row;
     background-color: $light-color;
     width: 90%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem;
     border-radius: 10px;
     justify-content: space-between;
     margin-bottom: 1rem;
@@ -77,8 +68,9 @@ $textColorProjectCard: black;
         flex-direction: column;
         p {
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 600;
             color: $textColorProjectCard;
+            margin-bottom: 1rem;
         }
         span {
             font-size: 18px;

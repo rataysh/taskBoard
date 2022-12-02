@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { Tasks } from './pages/Tasks';
 import { Projects } from './pages/Projects';
 
@@ -8,7 +8,7 @@ const App = () => {
       <>
           <Routes>
               <Route path='/' element={<Projects />} />
-              <Route path='/tasks' element={<Tasks />} />
+              <Route path='tasks/:id' element={<Tasks />} />
           </Routes>
       </>
   );
