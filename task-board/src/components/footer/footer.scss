@@ -2,10 +2,8 @@
 @import "../../styles/varCSS.scss";
 
 .footer {
-    padding: 2.5rem;
-    background-color: $light-color;
-    // padding-bottom: 1rem;
-    // margin-top: 0.25rem; 
+    padding: 1.5rem;
+    background-color: $darker-color;
     div {
         display: flex;
         flex-direction: column;
@@ -14,9 +12,9 @@
         p {
             font-size: 1.5rem;
             font-weight: 500;
-            color: black;
             display: flex;
             padding-top: 0.5rem;
+            color: $light-color;
         }
     }
 }
@@ -39,6 +37,7 @@
         transition-property: all;
         transition-duration: 200ms;
         margin-left: 0.25rem;
+        color: $light-color;
         
             
         &:hover {
