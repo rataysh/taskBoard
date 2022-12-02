@@ -12,7 +12,9 @@ export const Tasks: React.FC = () => {
             <div className='wrapper'>
                 <header className='header'>Project Name</header>
                 <main className='main'>
-                    <div>
+                    <div className='allBoard'>
+                        <EachTaskBoard />
+                        <EachTaskBoard />
                         <EachTaskBoard />
                     </div>
                 </main>

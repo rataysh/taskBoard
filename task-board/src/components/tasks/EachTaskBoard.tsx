@@ -6,7 +6,7 @@ import "../../styles/tasks.scss";
 
 export const EachTaskBoard: React.FC = () => {
     return (
-        <div className='backBoard'>
+        <div className='eachBoard'>
             <h3>Queue</h3>
             <div>
                 <h6>TAG PRIORITY</h6>
