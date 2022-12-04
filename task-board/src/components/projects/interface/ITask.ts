@@ -3,11 +3,11 @@ export interface ITask {
     id: number;
     title: string;
     description: string;
-    dateCreate: number;
+    dateCreate: string;
     precedence: string;
-    status: string;
-    timeDuringWork?: number;
-    dateEnd?: number;
+    status: number; // 0 - Queue 1 - Development 2 - Done
+    timeDuringWork?: string;
+    dateEnd?: string;
     file?: File;
 }
 

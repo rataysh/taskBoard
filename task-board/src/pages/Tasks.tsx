@@ -1,8 +1,10 @@
 /** @format */
 
 import React from "react";
+import {ButtonAdd} from "../components/ButtonAdd";
 import {AboutMe} from "../components/footer/footer";
-import {EachTaskBoard} from "../components/tasks/EachTaskBoard";
+import {testTask} from "../components/offlineData";
+import {TaskBoards} from "../components/tasks/TaskBoards";
 import "../styles/projects.scss";
 // import {Routes, Route, Link} from "react-router-dom";
 
@@ -12,11 +14,12 @@ export const Tasks: React.FC = () => {
             <div className='wrapper'>
                 <header className='header'>Project Name</header>
                 <main className='main'>
-                    <div className='allBoard'>
-                        <EachTaskBoard />
-                        <EachTaskBoard />
-                        <EachTaskBoard />
+                    <div className='buttonAdd'>
+                        <ButtonAdd text='Add new task' />
                     </div>
+                    <>
+                        <TaskBoards task={testTask} />
+                    </>
                 </main>
                 <>
                     <AboutMe />

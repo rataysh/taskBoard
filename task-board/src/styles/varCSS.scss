@@ -1,5 +1,30 @@
+/** @format */
 
-$background-main: #1F6ED4;
-$darker-color: #0000A1;
-$blue-color: #39BAE8;
-$light-color: #B9EDF8;
+$background-main: #1f6ed4;
+$darker-color: #0000a1;
+$blue-color: #39bae8;
+$light-color: #b9edf8;
+
+@mixin breakpoint($point) {
+    @if $point == lg {
+        @media (max-width: 992px) {
+            @content;
+        }
+    } @else if $point == md {
+        @media (max-width: 768px) {
+            @content;
+        }
+    } @else if $point == sm {
+        @media (max-width: 576px) {
+            @content;
+        }
+    } @else if $point == xs {
+        @media (max-width: 320px) {
+            @content;
+        }
+    } @else if $point == minLg {
+        @media (min-width: 993px) {
+            @content;
+        }
+    }
+}

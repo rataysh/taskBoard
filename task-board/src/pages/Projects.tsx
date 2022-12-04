@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import {AddNewProject} from "../components/projects/AddNewProject";
+import {ButtonAdd} from "../components/ButtonAdd";
 import {EachProject} from "../components/projects/EachProject";
 import "../styles/projects.scss";
 import {dataProject} from "../components/offlineData";
@@ -13,9 +13,8 @@ export const Projects: React.FC = () => {
             <div className='wrapper'>
                 <header className='header'>Task Board</header>
                 <main className='main'>
-                    <AddNewProject />
-                    <div className='projectsBox'
-                    >
+                    <ButtonAdd text="Create new project"/>
+                    <div className='projectsBox'>
                         {dataProject.map((projectProps) => (
                             <EachProject
                                 projectProps={projectProps}
