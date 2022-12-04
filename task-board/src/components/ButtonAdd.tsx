@@ -5,6 +5,7 @@ import "../styles/addNewProjButton.scss";
 
 interface ButtonText {
     text: string;
+    // func: () => void;
 }
 
 export const ButtonAdd: React.FC<ButtonText> = (props) => {

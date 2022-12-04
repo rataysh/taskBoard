@@ -18,7 +18,7 @@ export const Tasks: React.FC = () => {
                         <ButtonAdd text='Add new task' />
                     </div>
                     <>
-                        <TaskBoards task={testTask} />
+                        <TaskBoards tasks={testTask} />
                     </>
                 </main>
                 <>
