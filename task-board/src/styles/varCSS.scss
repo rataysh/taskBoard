@@ -5,6 +5,10 @@ $darker-color: #0000a1;
 $blue-color: #39bae8;
 $light-color: #b9edf8;
 
+$backBoard: #dddfe7;
+$textBoard: #363333;
+
+
 @mixin breakpoint($point) {
     @if $point == lg {
         @media (max-width: 992px) {

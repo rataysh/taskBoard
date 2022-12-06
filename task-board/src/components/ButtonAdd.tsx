@@ -5,14 +5,14 @@ import "../styles/addNewProjButton.scss";
 
 interface ButtonText {
     text: string;
-    // func: () => void;
+    setActive: (active:boolean) => void;
 }
 
-export const ButtonAdd: React.FC<ButtonText> = (props) => {
+export const ButtonAdd: React.FC<ButtonText> = ({text, setActive}) => {
     return (
         <>
-            <button className='effect effect-2'>
-                <span>{props.text}</span>
+            <button className='effect effect-2' onClick={() => setActive(true)}>
+                <span>{text}</span>
             </button>
         </>
     );

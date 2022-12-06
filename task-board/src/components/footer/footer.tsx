@@ -2,7 +2,7 @@
 
 import React from "react";
 import {AboutDev} from "./aboutDev";
-import "./footer.scss";
+import "../../styles/footer.scss";
 
 export const AboutMe: React.FC = () => {
     return (

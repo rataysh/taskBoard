@@ -3,7 +3,7 @@
 import React from "react";
 import {AiFillGithub, AiFillLinkedin} from "react-icons/ai";
 import {BsTelegram} from "react-icons/bs";
-import "./footer.scss";
+import "../../styles/footer.scss";
 
 interface GitLinkTg {
     gitLink: string;

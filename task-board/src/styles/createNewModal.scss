@@ -1,0 +1,196 @@
+/** @format */
+
+@import "./varCSS";
+
+.modal__wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.3);
+    backdrop-filter: blur(6px);
+}
+
+.modal__wrapper.open {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__wrapper.close {
+    height: 0;
+    display: none;
+}
+
+.modalBody {
+    transition: all 0.2s linear 0s;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5%;
+    width: 50%;
+    height: 60%;
+    background-color: $backBoard;
+    border-radius: 15px;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+
+    @include breakpoint(sm) {
+        width: 80%;
+    }
+
+    span {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        align-self: end;
+        z-index: 10;
+
+        &:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+    }
+    div {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: start;
+        // margin-top: 4rem;
+        p {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            padding: 1rem;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+            border-radius: 5px;
+
+            &:focus {
+                outline: none;
+                border: 0.5px solid $blue-color;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+            }
+        }
+    }
+    button {
+        margin-top: 2rem;
+        padding: 1rem;
+        width: 70%;
+        &:hover {
+            opacity: 0.7;
+        }
+        &:active {
+            opacity: 0.4;
+            color: $light-color;
+        }
+    }
+}
+
+.modalBodyTask {
+    height: 90%;
+    margin-top: 2%;
+    padding-top: 0.5rem;
+}
+
+// radio button css style
+$color1: #ffff;
+$color2: $blue-color;
+
+.radio {
+    margin: 5px;
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        + .radio-label {
+            &:before {
+                content: "";
+                background: $color1;
+                border-radius: 100%;
+                border: 1px solid darken($color1, 25%);
+                display: inline-block;
+                width: 1.4em;
+                height: 1.4em;
+                position: relative;
+                top: -0.2em;
+                margin-right: 1em;
+                vertical-align: top;
+                cursor: pointer;
+                text-align: center;
+                transition: all 250ms ease;
+            }
+        }
+        &:checked {
+            + .radio-label {
+                &:before {
+                    background-color: $color2;
+                    box-shadow: inset 0 0 0 4px $color1;
+                }
+            }
+        }
+        &:focus {
+            + .radio-label {
+                &:before {
+                    outline: none;
+                    border-color: $color2;
+                }
+            }
+        }
+        &:disabled {
+            + .radio-label {
+                &:before {
+                    box-shadow: inset 0 0 0 4px $color1;
+                    border-color: darken($color1, 25%);
+                    background: darken($color1, 25%);
+                }
+            }
+        }
+        + .radio-label {
+            &:empty {
+                &:before {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+// input file style
+
+.input-file {
+    position: relative;
+}
+.input-file-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    background-color: $color2;
+    margin-top: 1rem;
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+.input-file input[type="file"] {
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+

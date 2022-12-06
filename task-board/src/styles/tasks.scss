@@ -2,6 +2,9 @@
 
 @import "./varCSS";
 
+
+
+
 .eachBoard {
     display: flex;
     flex-direction: column;
@@ -9,6 +12,7 @@
     padding: 1rem;
     gap: 1rem;
     min-width: 225px;
+
     @include breakpoint(md) {
         padding: 0.6rem;
         gap: 0.5rem;
@@ -17,7 +21,7 @@
     width: 33%;
     height: 100vh;
 
-    background: #dddfe7;
+    background: $backBoard;
     border-radius: 10px;
     h3 {
         font-family: "Inter";
@@ -25,7 +29,7 @@
         font-weight: 600;
         font-size: larger;
         line-height: 250%;
-        color: #363333;
+        color: $textBoard;
     }
     div {
         display: flex;
@@ -33,6 +37,7 @@
         align-items: flex-start;
         padding: 1rem;
         gap: 1rem;
+        cursor: pointer;
 
         width: 100%;
 
