@@ -8,7 +8,7 @@ import { CreateNewTask } from "../components/tasks/CreateNewTask";
 import {TaskBoards} from "../components/tasks/TaskBoards";
 import "../styles/projects.scss";
 import "../styles/createNewModal.scss";
-// import {Routes, Route, Link} from "react-router-dom";
+
 
 export const Tasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);

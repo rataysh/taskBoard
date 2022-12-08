@@ -9,5 +9,6 @@ export interface ITask {
     timeDuringWork?: string;
     dateEnd?: string;
     file?: File;
+    subTasks?: ITask[];
 }
 
