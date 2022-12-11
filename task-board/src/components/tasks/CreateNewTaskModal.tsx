@@ -3,12 +3,15 @@
 import React from "react";
 import {GrClose} from "react-icons/gr";
 
-interface ActiveModal {
+interface ICreateNewTaskModal {
     active: boolean;
     setActive: (active: boolean) => void;
 }
 
-export const CreateNewTask: React.FC<ActiveModal> = ({active, setActive}) => {
+export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
+    active,
+    setActive,
+}) => {
     return (
         <div className={`modal__wrapper ${active ? "open" : "close"}`}>
             <div className='modalBody modalBodyTask'>
@@ -100,7 +103,7 @@ export const CreateNewTask: React.FC<ActiveModal> = ({active, setActive}) => {
                     <p>File:</p>
                     <label>
                         <input type='file' name='file' />
-                        <span className='input-file-btn'>Выберите файл</span>
+                        <span className='input-file-btn'>Attach file</span>
                     </label>
                 </div>
                 <button className='effect'>CREATE</button>

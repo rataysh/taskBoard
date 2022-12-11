@@ -13,7 +13,7 @@ interface GitLinkTg {
 
 export const AboutDev: React.FC<GitLinkTg> = (props: GitLinkTg) => {
     return (
-        <body className='aboutDev'>
+        <div className='aboutDev'>
             <a href={props.gitLink} target='_blank' rel='noreferrer'>
                 <AiFillGithub />
             </a>
@@ -25,6 +25,6 @@ export const AboutDev: React.FC<GitLinkTg> = (props: GitLinkTg) => {
             <a href={props.telegramLink} target='_blank' rel='noreferrer'>
                 <BsTelegram />
             </a>
-        </body>
+        </div>
     );
 };

@@ -8,6 +8,44 @@ $light-color: #b9edf8;
 $backBoard: #dddfe7;
 $textBoard: #363333;
 
+%fontMain {
+    font-family: "Poppins", sans-serif;
+}
+
+%fontDate {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 150%;
+    color: #646570;
+}
+
+%modal__wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.3);
+    backdrop-filter: blur(6px);
+}
+
+%modal__open {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+%modal__close {
+    height: 0;
+    display: none;
+    // overflow-y: hidden;
+}
 
 @mixin breakpoint($point) {
     @if $point == lg {

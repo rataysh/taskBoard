@@ -17,31 +17,29 @@
             color: $light-color;
         }
     }
-}
+    div.aboutDev {
+        transition: all 0.2s linear 0s;
 
-.aboutDev {
-    transition: all 0.2s linear 0s;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-self: center;
-    padding-bottom: 0.5rem;
-    padding-top: 1rem;
-
-    a {
         display: flex;
-        font-size: x-large;
-        transition-property: all;
-        transition-duration: 200ms;
-        margin-left: 0.25rem;
-        color: $light-color;
-        
-            
-        &:hover {
-            transform: scale(1.1);
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        align-self: center;
+        padding-bottom: 0.5rem;
+        padding-top: 1rem;
+
+        a {
+            display: flex;
+            font-size: x-large;
+            transition-property: all;
+            transition-duration: 200ms;
+            margin-left: 0.25rem;
+            color: $light-color;
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
     }
 }

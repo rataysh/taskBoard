@@ -16,12 +16,16 @@ export const EachTask: React.FC<IEachTask> = ({task, active, setActive}) => {
             <h6>{task.precedence + " priority"}</h6>
             <h4>{task.title}</h4>
             <h5>{task.description}</h5>
-            <p>
-                <BsCalendar />
-                {task.dateCreate}
-                <p>Sub-tasks:</p>
-                {task.subTasks?.length ?? 0}
-            </p>
+            <article>
+                <p>
+                    <BsCalendar />
+                    {task.dateCreate}
+                </p>
+                <p>
+                    <span>Sub-tasks:</span>
+                    {task.subTasks?.length ?? 0}
+                </p>
+            </article>
         </div>
     );
 };

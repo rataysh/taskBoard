@@ -1,19 +1,50 @@
+/** @format */
+
 @import "./varCSS";
+
+.modal__wrapper {
+    @extend %modal__wrapper;
+}
+
+.modal__wrapper.open {
+    @extend %modal__open;
+}
+
+.modal__wrapper.close {
+    @extend %modal__close;
+}
+
+.modal__sub {
+    @extend %modal__open;
+    background: rgba(white, $alpha: 0.8);
+}
+
+.modalContainer {
+    position: fixed;
+    top: 2rem;
+    left: 20%;
+    width: 100%;
+    @include breakpoint(md) {
+        left: 10%;
+    }
+}
 
 .modalBodyEach {
     transition: all 0.2s linear 0s;
 
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: column;
+    // grid-template-columns: 2.5fr 1fr;
+    // grid-template-rows: auto;
     padding: 1rem;
     padding-top: 3rem;
     position: relative;
-    width: 55%;
-    height: 70%;
+    width: 60%;
+    min-height: 90%;
     background-color: $backBoard;
     border-radius: 15px;
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+    // overflow-y: scroll;
 
     @include breakpoint(md) {
         width: 80%;
@@ -31,9 +62,218 @@
             cursor: pointer;
         }
     }
-    
-    div {
 
+    main {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1rem;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            flex-wrap: wrap;
+
+            @include breakpoint(sm) {
+                flex-direction: column-reverse;
+            }
+            div.head {
+                display: flex;
+                justify-content: space-between;
+                gap: 0.5rem;
+                font-size: xx-large;
+                font-weight: 500;
+                padding-bottom: 1.5rem;
+
+                @include breakpoint(sm) {
+                    padding-bottom: 1rem;
+                }
+            }
+
+            div.prior {
+                height: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 14px;
+                font-weight: 500;
+                background-color: #46f7b7;
+                gap: 0.5rem;
+
+                @include breakpoint(sm) {
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+
+        div.sideBar {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 14px;
+            font-weight: 300;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                padding: 0.5rem;
+                border-radius: 3px;
+
+                div.divHead {
+                    background-color: $light-color;
+                    gap: 1rem;
+                    padding: 0.5rem;
+                    border: 0;
+                    border-radius: 3px;
+                    padding-right: 15px;
+                }
+
+                div {
+                    background-color: $blue-color;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    border-left: 1px dotted;
+                    gap: 0.5rem;
+                }
+            }
+        }
+
+        div.container {
+            height: 50%;
+            div.headerDecription {
+                display: flex;
+                gap: 0.5rem;
+                font-size: 22px;
+                font-weight: 400;
+                margin-bottom: 0.5rem;
+            }
+            div.description {
+                display: flex;
+                flex-direction: row;
+                padding: 0.5rem;
+                font-size: 18px;
+                min-height: 250px;
+                height: 100%;
+                background-color: white;
+                overflow-y: scroll;
+                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 300;
+
+                &::-webkit-scrollbar {
+                    width: 0;
+                }
+            }
+        }
+
+        div.sub {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+
+            p {
+                font-size: 22px;
+                font-weight: 400;
+            }
+            div.eachSub {
+                display: flex;
+
+                div {
+                    background-color: $light-color;
+                    gap: 1rem;
+                    padding: 0.5rem;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    padding-right: 15px;
+                }
+                div.closeIcon {
+                    background-color: $blue-color;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 14px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    border-left: 1px dotted;
+                }
+            }
+        }
+
+        div.comments {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 0.5rem;
+            font-size: 22px;
+            font-weight: 400;
+            textarea,
+            .allComments {
+                padding: 1rem;
+                width: 100%;
+                background: #ffffff;
+                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+                border-radius: 5px;
+                word-wrap: break-word;
+                font-size: 14px;
+                font-weight: 300;
+
+                &:focus {
+                    outline: none;
+                    border: 0.5px solid $blue-color;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+                    padding: 1.5rem;
+                }
+            }
+        }
     }
-   
+}
+
+.allCommentsContainer {
+    gap: 0;
+
+    .allComments {
+        font-size: 16px;
+        position: relative;
+        span {
+            top: 0;
+            right: 0;
+            font-size: 24px;
+        }
+    }
+
+    .date {
+        @extend %fontDate;
+    }
+}
+
+.changeIcon {
+    cursor: pointer;
+    &:hover {
+        opacity: 0.7;
+        // scale: 1.05;
+    }
+    & :active {
+        opacity: 0.5;
+        scale: 1.01;
+    }
+}
+
+.sub__task__wrapper {
+    z-index: 20;
 }

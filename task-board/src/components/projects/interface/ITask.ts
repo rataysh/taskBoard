@@ -1,3 +1,4 @@
+/** @format */
 
 export interface ITask {
     id: number;
@@ -10,5 +11,11 @@ export interface ITask {
     dateEnd?: string;
     file?: File;
     subTasks?: ITask[];
+    comments?: IComment[];
 }
 
+export interface IComment {
+    id: number;
+    text: string;
+    dateCreate: string;
+}

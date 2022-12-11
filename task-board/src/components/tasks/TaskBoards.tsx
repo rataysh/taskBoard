@@ -61,6 +61,7 @@ export const TaskBoards: React.FC<EachTasks> = ({tasks: task}) => {
                 task={task[0]}
                 active={eachTaskModalActive}
                 setActive={setEachTaskModalActive}
+                subTaskFlag={false}
             />
         </>
     );

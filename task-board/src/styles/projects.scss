@@ -8,6 +8,7 @@
     margin: 0;
     border: 0;
     box-sizing: border-box;
+    @extend %fontMain;
 }
 
 .body {
@@ -69,7 +70,7 @@ $textColorProjectCard: black;
         flex-direction: column;
         p {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             color: $textColorProjectCard;
             margin-bottom: 1rem;
         }
@@ -85,7 +86,3 @@ $textColorProjectCard: black;
         transform: scale(1.05);
     }
 }
-
-
-
-

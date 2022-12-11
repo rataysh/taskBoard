@@ -1,20 +1,19 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {ButtonAdd} from "../components/ButtonAdd";
 import {AboutMe} from "../components/footer/footer";
 import {testTask} from "../components/offlineData";
-import { CreateNewTask } from "../components/tasks/CreateNewTask";
+import {CreateNewTaskModal} from "../components/tasks/CreateNewTaskModal";
 import {TaskBoards} from "../components/tasks/TaskBoards";
 import "../styles/projects.scss";
 import "../styles/createNewModal.scss";
-
 
 export const Tasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
 
     return (
-        <body className='body'>
+        <div className='body'>
             <div className='wrapper'>
                 <header className='header'>Project Name</header>
                 <main className='main'>
@@ -23,7 +22,7 @@ export const Tasks: React.FC = () => {
                             text='Add new task'
                             setActive={setCreatNewTaskModal}
                         />
-                        <CreateNewTask
+                        <CreateNewTaskModal
                             active={creatNewTaskModal}
                             setActive={setCreatNewTaskModal}
                         />
@@ -36,6 +35,6 @@ export const Tasks: React.FC = () => {
                     <AboutMe />
                 </>
             </div>
-        </body>
+        </div>
     );
 };

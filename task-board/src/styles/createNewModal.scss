@@ -3,24 +3,15 @@
 @import "./varCSS";
 
 .modal__wrapper {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: rgba($color: #000000, $alpha: 0.3);
-    backdrop-filter: blur(6px);
+    @extend %modal__wrapper;
 }
 
 .modal__wrapper.open {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   @extend %modal__open;
 }
 
 .modal__wrapper.close {
-    height: 0;
-    display: none;
+    @extend %modal__close
 }
 
 .modalBody {
@@ -32,6 +23,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin-top: 5%;
+    padding-bottom: 1rem;
     width: 50%;
     height: 60%;
     background-color: $backBoard;
@@ -56,14 +48,7 @@
     }
     div {
         width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: start;
-        // margin-top: 4rem;
         p {
-            font-family: "Inter";
-            font-style: normal;
             font-weight: 500;
             font-size: 20px;
             margin-bottom: 0.5rem;
@@ -83,7 +68,7 @@
         }
     }
     button {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         padding: 1rem;
         width: 70%;
         &:hover {
@@ -193,4 +178,3 @@ $color2: $blue-color;
     width: 0;
     height: 0;
 }
-

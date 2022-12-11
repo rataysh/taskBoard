@@ -2,7 +2,7 @@
 
 import moment from "moment";
 import {IProject} from "./projects/interface/IProject";
-import {ITask} from "./projects/interface/ITask";
+import {ITask, IComment} from "./projects/interface/ITask";
 
 export const dataProject: IProject[] = [
     {
@@ -40,9 +40,47 @@ export const testTask: ITask[] = [
         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
         precedence: "low",
         status: 0,
-        // timeDuringWork?: number,
-        // dateEnd?: number,
-        // file?: File,
+        comments: [
+            {
+                id: 0,
+                text: "First test comment",
+                dateCreate: moment(Date.now()).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                ),
+            },
+            {
+                id: 1,
+                text: "Second comment",
+                dateCreate: moment(Date.now()).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                ),
+            },
+            {
+                id: 2,
+                text: "Third comment",
+                dateCreate: moment(Date.now()).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                ),
+            },
+        ],
+        subTasks: [
+            {
+                id: 0,
+                title: "UX/UI",
+                description: "Create UX/UI design",
+                dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+                precedence: "medium",
+                status: 1,
+            },
+            {
+                id: 1,
+                title: "API",
+                description: "API from backend",
+                dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+                precedence: "higth",
+                status: 2,
+            },
+        ],
     },
     {
         id: 1,
