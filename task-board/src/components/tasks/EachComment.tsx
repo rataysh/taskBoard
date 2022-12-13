@@ -2,7 +2,7 @@
 
 import React from "react";
 import {MdOutlineDeleteForever} from "react-icons/md";
-import {IComment} from "../projects/interface/ITask";
+import {IComment} from "../interface/ITask";
 
 interface Comment {
     comment: IComment;
@@ -10,7 +10,7 @@ interface Comment {
 
 export const EachComment: React.FC<Comment> = ({comment}) => {
     return (
-        <div className="allCommentsContainer">
+        <div className='allCommentsContainer'>
             <p className='date'>{comment.dateCreate}</p>
             <div className='allComments'>
                 <p>{comment.text}</p>

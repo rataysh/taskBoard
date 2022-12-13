@@ -2,7 +2,7 @@
 
 import React from "react";
 import {BsCalendar} from "react-icons/bs";
-import {ITask} from "../projects/interface/ITask";
+import {ITask} from "../interface/ITask";
 
 interface IEachTask {
     task: ITask;

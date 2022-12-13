@@ -1,7 +1,7 @@
 /** @format */
 
-import {legacy_createStore as createStore, combineReducers} from "redux";
+import {legacy_createStore as createStore} from "redux";
+import {rootResucer} from "./reducers";
+import {composeWithDevTools} from "redux-devtools-extension"
 
-const rootResucer = combineReducers({});
-
-export const store = createStore(rootResucer);
+export const store = createStore(rootResucer, composeWithDevTools());

@@ -1,19 +1,27 @@
 /** @format */
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ButtonAdd} from "../components/ButtonAdd";
 import {EachProject} from "../components/projects/EachProject";
 import "../styles/createNewModal.scss";
-import {dataProject} from "../components/offlineData";
+// import {dataProject} from "../components/offlineData";
 import {AboutMe} from "../components/footer/footer";
-import { CreateNewProject } from "../components/projects/CreateNewProject";
+import {CreateNewProject} from "../components/projects/CreateNewProject";
+import {useTypedSelector} from "../hooks/useTypedSelector";
+import {useDispatch} from "react-redux";
 
 export const Projects: React.FC = () => {
     const [createNewProjectModal, setCreateNewProjectModal] =
         useState<boolean>(false);
 
+    const dataProject = useTypedSelector((state) => state.projects);
+
+    //  useEffect(() => {
+
+    //  }, );
+
     return (
-        <body className='body'>
+        <div className='body'>
             <div className='wrapper'>
                 <header className='header'>Task Board</header>
                 <main className='main'>
@@ -38,6 +46,6 @@ export const Projects: React.FC = () => {
                     <AboutMe />
                 </>
             </div>
-        </body>
+        </div>
     );
 };

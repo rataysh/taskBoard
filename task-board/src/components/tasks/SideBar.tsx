@@ -1,11 +1,12 @@
-import React from 'react'
-import { MdAttachFile, MdEditNote } from 'react-icons/md';
-import { ITask } from '../projects/interface/ITask';
+/** @format */
+
+import React from "react";
+import {MdAttachFile, MdEditNote} from "react-icons/md";
+import {ITask} from "../interface/ITask";
 
 interface ISideBar {
     task: ITask;
 }
-
 
 export const SideBar: React.FC<ISideBar> = ({task}) => {
     return (

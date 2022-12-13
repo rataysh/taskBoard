@@ -3,11 +3,11 @@
 import React, {useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {MdEditNote} from "react-icons/md";
-import {ITask} from "../projects/interface/ITask";
+import {ITask} from "../interface/ITask";
 import "../../styles/eachTaskModal.scss";
 import {EachComment} from "./EachComment";
 import {SubTask} from "./SubTask";
-import { SideBar } from "./SideBar";
+import {SideBar} from "./SideBar";
 
 interface IEachTaskModal {
     task: ITask;
@@ -53,8 +53,8 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                                 />
                             </div>
                         </header>
-                        <SideBar task={task}/>
-                        
+                        <SideBar task={task} />
+
                         <div className='container'>
                             <div className='headerDecription'>
                                 <p>Description</p>

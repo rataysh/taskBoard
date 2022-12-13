@@ -3,7 +3,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import ".././../styles/addNewProjButton.scss";
-import {IProject} from "./interface/IProject";
+import {IProject} from "../interface/IProject";
 
 interface EachProjects {
     projectProps: IProject;

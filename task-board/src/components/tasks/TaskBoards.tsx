@@ -2,7 +2,7 @@
 
 import React, {useState} from "react";
 import "../../styles/tasksBoard.scss";
-import {ITask} from "../projects/interface/ITask";
+import {ITask} from "../interface/ITask";
 import {EachTask} from "./EachTask";
 import {EachTaskModal} from "./EachTaskModal";
 

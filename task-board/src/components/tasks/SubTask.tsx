@@ -1,9 +1,9 @@
 /** @format */
 
 import React from "react";
-import { GrClose } from "react-icons/gr";
-import { ITask } from "../projects/interface/ITask";
-import { SubTaskModal } from "./SubTaskModal";
+import {GrClose} from "react-icons/gr";
+import {ITask} from "../interface/ITask";
+import {SubTaskModal} from "./SubTaskModal";
 
 interface IEachSubTask {
     task: ITask;
