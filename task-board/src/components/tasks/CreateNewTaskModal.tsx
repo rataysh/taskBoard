@@ -20,18 +20,18 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
                         <GrClose />
                     </span>
                     <div>
-                        <p>Task name:</p>
+                        <p>Task name</p>
                         <input
                             type='text'
                             placeholder='My project'
                             required></input>
                     </div>
                     <div>
-                        <p>Description:</p>
+                        <p>Description</p>
                         <textarea placeholder='My project description...'></textarea>
                     </div>
                     <div>
-                        <p>Precedence:</p>
+                        <p>Precedence</p>
                         <div className='radio'>
                             <input
                                 id='radioPrecedence-1'
@@ -66,7 +66,7 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
                         </div>
                     </div>
                     <div>
-                        <p>Status:</p>
+                        <p>Status</p>
                         <div className='radio'>
                             <input
                                 id='radioStatus-1'
@@ -101,7 +101,7 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
                         </div>
                     </div>
                     <div className='file'>
-                        <p>File:</p>
+                        <p>File</p>
 
                         <div className='containerFile'>
                             <form>

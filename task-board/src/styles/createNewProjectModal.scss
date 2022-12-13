@@ -1,0 +1,101 @@
+/** @format */
+
+@import "./varCSS";
+
+.modal__wrapper {
+    @extend %modal__wrapper;
+}
+
+.modal__wrapper.open {
+    @extend %modal__open;
+}
+
+.modal__wrapper.close {
+    @extend %modal__close;
+}
+
+
+.modalBodyCreateNewProject {
+    transition: all 0.2s linear 0s;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    padding-bottom: 1rem;
+    padding-top: 3rem;
+    width: 50%;
+    height: 60%;
+    background-color: $backBoard;
+    border-radius: 15px;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+    
+    padding-top: 2%;
+    justify-content: space-around;
+
+
+    @include breakpoint(md) {
+        width: 80%;
+    }
+
+    span {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        align-self: end;
+        z-index: 1;
+
+        &:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+    }
+    div {
+        width: 70%;
+        p {
+            font-weight: 500;
+            font-size: 20px;
+            margin-bottom: 0.5rem;
+            padding-top: 1.2rem;
+        }
+        input,
+        textarea {
+            padding: 1rem;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);
+            border-radius: 5px;
+
+            &:focus {
+                outline: none;
+                border: 0.5px solid $blue-color;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+            }
+        }
+        textarea {
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    button {
+        // align-self: center;
+        justify-self: end;
+        margin-top: 1.5rem;
+        padding: 0.8rem;
+        width: 70%;
+        &:hover {
+            opacity: 0.7;
+        }
+        &:active {
+            opacity: 0.4;
+            color: $light-color;
+        }
+    }
+}
+
+
+
+
+
+

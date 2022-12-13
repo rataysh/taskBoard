@@ -1,24 +1,48 @@
 /** @format */
 
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import ".././../styles/addNewProjButton.scss";
+import "../../styles/eachProject.scss";
 import {IProject} from "../interface/IProject";
+import {MdOutlineDeleteForever} from "react-icons/md";
+import {DelProjectModal} from "./DelProjectModal";
+import Popup from "reactjs-popup";
 
-interface EachProjects {
-    projectProps: IProject;
+interface IEachProjects {
+    task: IProject;
 }
 
-export const EachProject: React.FC<EachProjects> = (props) => {
+export const EachProject: React.FC<IEachProjects> = ({task}) => {
+    //  flag for modal window ACEPT or NOT del projects
+    const [active, setActive] = useState<boolean>(false);
+
     return (
-        <Link
-            to={`/tasks/${props.projectProps.id}`}
-            style={{textDecoration: "none"}}
-            className='eachProjectCard'>
-            <div>
-                <p>{props.projectProps.title}</p>
-                <span>{props.projectProps.description}</span>
+        <>
+            <div className='eachProjectCard'>
+                <MdOutlineDeleteForever
+                    className='del'
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // e.nativeEvent.stopImmediatePropagation();
+                        setActive(!active);
+                    }}
+                />
+
+                <Link to={`/tasks/${task.id}`} style={{textDecoration: "none"}}>
+                    <div>
+                        <p>{task.title}</p>
+                        <p className='description'>{task.description}</p>
+                    </div>
+                </Link>
             </div>
-        </Link>
+            <>
+                <DelProjectModal
+                    task={task}
+                    active={active}
+                    setActive={setActive}
+                />
+            </>
+        </>
     );
 };

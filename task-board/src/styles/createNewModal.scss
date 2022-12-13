@@ -2,17 +2,6 @@
 
 @import "./varCSS";
 
-.modal__wrapper {
-    @extend %modal__wrapper;
-}
-
-.modal__wrapper.open {
-    @extend %modal__open;
-}
-
-.modal__wrapper.close {
-    @extend %modal__close;
-}
 
 .modalContainer {
     position: fixed;
@@ -232,6 +221,7 @@ div.file {
             font-size: 16px;
             line-height: $height;
             padding: 0 15px;
+             border-radius: 0 5px 5px 0;
             text-transform: uppercase;
             // pointer-events: none;
         }

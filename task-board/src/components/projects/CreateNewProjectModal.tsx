@@ -1,30 +1,33 @@
 /** @format */
 
 import React, {ChangeEvent, useState} from "react";
-import "../../styles/projects.scss";
+import "../../styles/createNewProjectModal.scss";
 import {GrClose} from "react-icons/gr";
 import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import { idAdd } from "../../logic/idAdd";
+import {idAdd} from "../../logic/idAdd";
 
-interface ActiveModal {
+interface ICreateNewProjectModal {
     active: boolean;
     setActive: (active: boolean) => void;
 }
 
-export const CreateNewProject: React.FC<ActiveModal> = ({
+export const CreateNewProjectModal: React.FC<ICreateNewProjectModal> = ({
     active,
     setActive,
 }) => {
     const [name, setName] = useState<string>("");
     const [discription, setDiscription] = useState<string>("");
+    // check condition for UNLOCK button "Creeat new project"
     const [valid, setValid] = useState<boolean>(false);
+    //  all previous redux projects for CREATE NEW ID
     const dataProject = useTypedSelector((state) => state.projects);
 
     const dispatch = useDispatch();
 
     const inputName = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
+        //  Check correct name for projects and unlock button
         name !== "" && name.replace(/\s+/, "") !== ""
             ? setValid(true)
             : setValid(false);
@@ -59,7 +62,7 @@ export const CreateNewProject: React.FC<ActiveModal> = ({
 
     return (
         <div className={`modal__wrapper ${active ? "open" : "close"}`}>
-            <div className='modalBody'>
+            <div className='modalBodyCreateNewProject'>
                 <span
                     onClick={() => {
                         clearInput();
@@ -69,7 +72,7 @@ export const CreateNewProject: React.FC<ActiveModal> = ({
                 </span>
 
                 <div>
-                    <p>Project name:</p>
+                    <p>Project name</p>
                     <input
                         value={name}
                         onChange={inputName}
@@ -78,7 +81,7 @@ export const CreateNewProject: React.FC<ActiveModal> = ({
                         placeholder='My project'></input>
                 </div>
                 <div>
-                    <p>Description:</p>
+                    <p>Description</p>
                     <textarea
                         value={discription}
                         onChange={inputDiscription}
