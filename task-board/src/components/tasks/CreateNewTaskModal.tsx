@@ -118,13 +118,7 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
                             </form>
                         </div>
                     </div>
-                    {/* <div className='input-file'>
-                        <p>File:</p>
-                        <label>
-                            <input type='file' name='file' />
-                            <span className='input-file-btn'>Attach file</span>
-                        </label>
-                    </div> */}
+                   
                     <button className='effect'>CREATE</button>
                 </div>
             </div>

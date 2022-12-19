@@ -20,7 +20,7 @@ export const SubTaskModal: React.FC<IEachSubTaskModal> = ({
             <EachTaskModal
                 task={task}
                 active={active}
-                setActive={setActive}
+                // setActive={setActive}
                 subTaskFlag={true}
             />
         </div>

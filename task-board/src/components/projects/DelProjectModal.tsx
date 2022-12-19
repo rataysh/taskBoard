@@ -8,13 +8,13 @@ import "../../styles/delProjModal.scss";
 import {IProject} from "../interface/IProject";
 
 interface IDelProjectModal {
-    task: IProject;
+    project: IProject;
     active: boolean;
     setActive: (active: boolean) => void;
 }
 
 export const DelProjectModal: React.FC<IDelProjectModal> = ({
-    task,
+    project: task,
     active,
     setActive,
 }) => {

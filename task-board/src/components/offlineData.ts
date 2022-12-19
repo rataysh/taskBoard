@@ -92,17 +92,20 @@ export const dataProject: IProject[] = [
         title: "JavaScript project",
         description: "This is a news site project (React + JavaScript)",
         status: 0,
+        tasks: testTask,
     },
     {
         id: 3,
         title: "Create new order (USA)",
         description: "Discussion of project architecture",
         status: 0,
+        tasks: [],
     },
     {
         id: 4,
         title: "Looking for a new employee",
         description: "In conjunction with HR",
         status: 0,
+        tasks: [],
     },
 ];

@@ -6,39 +6,44 @@ import "../../styles/eachProject.scss";
 import {IProject} from "../interface/IProject";
 import {MdOutlineDeleteForever} from "react-icons/md";
 import {DelProjectModal} from "./DelProjectModal";
-import Popup from "reactjs-popup";
 
 interface IEachProjects {
-    task: IProject;
+    project: IProject;
 }
 
-export const EachProject: React.FC<IEachProjects> = ({task}) => {
+export const EachProject: React.FC<IEachProjects> = ({project}) => {
     //  flag for modal window ACEPT or NOT del projects
     const [active, setActive] = useState<boolean>(false);
 
     return (
         <>
-            <div className='eachProjectCard'>
-                <MdOutlineDeleteForever
-                    className='del'
-                    onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        // e.nativeEvent.stopImmediatePropagation();
-                        setActive(!active);
-                    }}
-                />
+            <Link
+                to={`/tasks/${project.id}`}
+                state={[
+                    project.title,
+                    project.tasks?.length !== 0 ? project.tasks : [],
+                ]}
+                style={{textDecoration: "none"}}>
+                <div className='eachProjectCard'>
+                    <MdOutlineDeleteForever
+                        className='del'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            // e.nativeEvent.stopImmediatePropagation();
+                            setActive(!active);
+                        }}
+                    />
 
-                <Link to={`/tasks/${task.id}`} style={{textDecoration: "none"}}>
                     <div>
-                        <p>{task.title}</p>
-                        <p className='description'>{task.description}</p>
+                        <p>{project.title}</p>
+                        <p className='description'>{project.description}</p>
                     </div>
-                </Link>
-            </div>
+                </div>
+            </Link>
             <>
                 <DelProjectModal
-                    task={task}
+                    project={project}
                     active={active}
                     setActive={setActive}
                 />

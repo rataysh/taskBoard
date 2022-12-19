@@ -8,27 +8,36 @@ import {CreateNewTaskModal} from "../components/tasks/CreateNewTaskModal";
 import {TaskBoards} from "../components/tasks/TaskBoards";
 import "../styles/projects.scss";
 import "../styles/createNewModal.scss";
+// import { ITask } from "../components/interface/ITask";
+import {useLocation} from "react-router-dom";
 
-export const Tasks: React.FC = () => {
+// interface ITasks {
+//     title: string;
+//     tasks: ITask[];
+// }
+
+export const PageTasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
+    const {state} = useLocation();
 
     return (
         <div className='body'>
             <div className='wrapper'>
-                <header className='header'>Project Name</header>
+                <header className='header'>{state[0]}</header>
                 <main className='main'>
                     <div className='buttonAdd'>
                         <ButtonAdd
                             text='Add new task'
                             setActive={setCreatNewTaskModal}
                         />
+
                         <CreateNewTaskModal
                             active={creatNewTaskModal}
                             setActive={setCreatNewTaskModal}
                         />
                     </div>
                     <>
-                        <TaskBoards tasks={testTask} />
+                        <TaskBoards tasks={state[1]} />
                     </>
                 </main>
                 <>

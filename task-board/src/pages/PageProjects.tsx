@@ -1,24 +1,18 @@
 /** @format */
 
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {ButtonAdd} from "../components/ButtonAdd";
 import {EachProject} from "../components/projects/EachProject";
 import "../styles/projects.scss";
-// import {dataProject} from "../components/offlineData";
 import {AboutMe} from "../components/footer/footer";
 import {CreateNewProjectModal} from "../components/projects/CreateNewProjectModal";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-// import {useDispatch} from "react-redux";
 
-export const Projects: React.FC = () => {
+export const PageProjects: React.FC = () => {
     const [createNewProjectModal, setCreateNewProjectModal] =
         useState<boolean>(false);
 
     const dataProject = useTypedSelector((state) => state.projects);
-
-    //  useEffect(() => {
-
-    //  }, );
 
     return (
         <div className='body'>
@@ -31,11 +25,8 @@ export const Projects: React.FC = () => {
                     />
 
                     <div className='projectsBox'>
-                        {dataProject.map((projectProps) => (
-                            <EachProject
-                                task={projectProps}
-                                key={projectProps.id}
-                            />
+                        {dataProject.map((project) => (
+                            <EachProject project={project} key={project.id} />
                         ))}
                     </div>
                 </main>

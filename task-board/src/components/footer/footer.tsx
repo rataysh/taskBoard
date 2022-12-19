@@ -17,7 +17,7 @@ export const AboutMe: React.FC = () => {
                 <AboutDev
                     gitLink='https://github.com/rataysh'
                     linkedLink='https://www.linkedin.com/in/denis-otkidach-developer/?locale=en_US'
-                    telegramLink='https://t.me/alabama_homie'
+                    telegramLink='https://t.me/otkDenis'
                 />
             </div>
         </footer>
