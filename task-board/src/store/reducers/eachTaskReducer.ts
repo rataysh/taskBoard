@@ -31,7 +31,7 @@ export const eachTaskReducer = (
         case ActionString.GET_ID_EACH_TASK:
             return [...state.filter((task) => task.id === action.payload.id)];
         case ActionString.CLEAR_TASK:
-            return [];
+            return testTask;
         default:
             return state;
     }

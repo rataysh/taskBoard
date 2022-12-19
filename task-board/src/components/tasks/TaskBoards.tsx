@@ -14,8 +14,8 @@ interface ITaskBoards {
 }
 
 export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
-    const [eachTaskModalActive, setEachTaskModalActive] =
-        useState<boolean>(false);
+    // const [eachTaskModalActive, setEachTaskModalActive] =
+    //     useState<boolean>(false);
     // const dispatch = useDispatch();
     const eachTaskActive = useTypedSelector((state) => state.modalView);
     const modalTask = useTypedSelector((state) => state.eachTask);
@@ -23,7 +23,7 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
     const createEachBoard = (tasks: ITask[], status: number) => {
         let boardTitle = "";
         status === 0
-            ? (boardTitle = "Que")
+            ? (boardTitle = "Queue")
             : status === 1
             ? (boardTitle = "Development")
             : (boardTitle = "Done");
@@ -58,12 +58,12 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
                 </div>
             </div>
             <>
-            <button
+            {/* <button
             onClick={() => {
                 console.log(eachTaskActive);
                 console.log(modalTask);
             }}
-            >GGGGGGGGGGGGGGGGG</button>
+            >GGGGGGGGGGGGGGGGG</button> */}
                 {eachTaskActive && modalTask.length > 0 && (
                     <EachTaskModal
                         active={eachTaskActive}

@@ -6,21 +6,21 @@ import {EachTaskModal} from "./EachTaskModal";
 
 interface IEachSubTaskModal {
     task: ITask;
-    active: boolean;
-    setActive: (active: boolean) => void;
+    subTaskActive: boolean;
+    setSubTaskActive: (active: boolean) => void;
 }
 
 export const SubTaskModal: React.FC<IEachSubTaskModal> = ({
     task,
-    active,
-    setActive,
+    subTaskActive,
+    setSubTaskActive,
 }) => {
     return (
         <div className='sub__task__wrapper'>
             <EachTaskModal
                 task={task}
-                active={active}
-                // setActive={setActive}
+                active={subTaskActive}
+                setActive={setSubTaskActive}
                 subTaskFlag={true}
             />
         </div>

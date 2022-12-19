@@ -8,26 +8,35 @@ import "../../styles/eachTaskModal.scss";
 import {EachComment} from "./EachComment";
 import {SubTask} from "./SubTask";
 import {SideBar} from "./SideBar";
-import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import {useDispatch} from "react-redux";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 interface IEachTaskModal {
     task: ITask;
     active: boolean;
-    // setActive: (active: boolean) => void;
+    setActive?: (active: boolean) => void;
     subTaskFlag: boolean;
 }
 
 export const EachTaskModal: React.FC<IEachTaskModal> = ({
     task,
     active,
-    // setActive,
+    setActive,
     subTaskFlag,
 }) => {
     const [subTaskActive, setSubTaskActive] = useState<boolean>(false);
     const dispatch = useDispatch();
-    const eachTaskActive = useTypedSelector((state) => state.modalView);
-    const testTask = useTypedSelector((state) => state.eachTask);
+    // const eachTaskActive = useTypedSelector((state) => state.modalView);
+    // const testTask = useTypedSelector((state) => state.eachTask);
+    const closeDispatch = () => {
+        dispatch({
+            type: "POP_UP_CLOSE_EACH_TASK",
+        });
+
+        dispatch({
+            type: "CLEAR_TASK",
+        });
+    };
 
     return (
         <div
@@ -37,14 +46,16 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
             <div className='modalContainer'>
                 <div className='modalBodyEach'>
                     <span
-                    // onClick={() => setActive(!active)}
-                    >
+                        onClick={() =>
+                            subTaskFlag ? setActive!(!active) : closeDispatch()
+                        }>
                         <GrClose />
                     </span>
 
                     <main>
                         <header>
                             <div className='head'>
+                                <p>{subTaskFlag && "Sub-task:"}</p>
                                 <p>{task.title}</p>
                                 <MdEditNote
                                     className='changeIcon'

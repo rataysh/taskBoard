@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, {useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {ITask} from "../interface/ITask";
 import {SubTaskModal} from "./SubTaskModal";
@@ -16,6 +16,8 @@ export const SubTask: React.FC<IEachSubTask> = ({
     subTaskActive,
     setSubTaskActive,
 }) => {
+    const [idSub, setIdSub] = useState<number | null>(null);
+
     return (
         <div className='sub'>
             <p>Sub-tasks:</p>
@@ -26,6 +28,7 @@ export const SubTask: React.FC<IEachSubTask> = ({
                               <div
                                   key={sub.id}
                                   onClick={() => {
+                                      setIdSub(sub.id);
                                       setSubTaskActive(!subTaskActive);
                                   }}>
                                   {sub.title}
@@ -34,16 +37,20 @@ export const SubTask: React.FC<IEachSubTask> = ({
                                   <GrClose />
                               </div>
                           </div>
-                          <>
-                              <SubTaskModal
-                                  task={sub}
-                                  active={subTaskActive}
-                                  setActive={setSubTaskActive}
-                              />
-                          </>
                       </>
                   ))
                 : "0"}
+            <>
+                {idSub !== null && (
+                    <SubTaskModal
+                        task={
+                            task.subTasks!.filter((sub) => sub.id === idSub)[0]
+                        }
+                        subTaskActive={subTaskActive}
+                        setSubTaskActive={setSubTaskActive}
+                    />
+                )}
+            </>
         </div>
     );
 };
