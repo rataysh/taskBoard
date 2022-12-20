@@ -1,16 +1,17 @@
 /** @format */
 
 // import moment from "moment";
+import { useLocation } from "react-router-dom";
 import {ITask} from "../../components/interface/ITask";
-import { testTask } from "../../components/offlineData";
+// import { testTask } from "../../components/offlineData";
 
 enum ActionString {
-    GET_ID_EACH_TASK = "GET_ID_EACH_TASK",
+    GET_EACH_TASK = "GET_EACH_TASK",
     CLEAR_TASK = "CLEAR_TASK",
 }
 
 interface ActionEachTaskFilterById {
-    type: ActionString.GET_ID_EACH_TASK;
+    type: ActionString.GET_EACH_TASK;
     payload: ITask;
 }
 
@@ -21,17 +22,17 @@ interface ActionEachTaskClearTask {
 type ActionEachTask = ActionEachTaskFilterById | ActionEachTaskClearTask;
 
 
-const initialState: ITask[] = testTask;
+const initialState: ITask[] = [];
 
 export const eachTaskReducer = (
     state = initialState,
     action: ActionEachTask
 ): ITask[] => {
     switch (action.type) {
-        case ActionString.GET_ID_EACH_TASK:
-            return [...state.filter((task) => task.id === action.payload.id)];
+        case ActionString.GET_EACH_TASK:
+            return [action.payload];
         case ActionString.CLEAR_TASK:
-            return testTask;
+            return [];
         default:
             return state;
     }

@@ -58,12 +58,6 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
                 </div>
             </div>
             <>
-            {/* <button
-            onClick={() => {
-                console.log(eachTaskActive);
-                console.log(modalTask);
-            }}
-            >GGGGGGGGGGGGGGGGG</button> */}
                 {eachTaskActive && modalTask.length > 0 && (
                     <EachTaskModal
                         active={eachTaskActive}

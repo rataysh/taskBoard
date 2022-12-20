@@ -20,7 +20,7 @@ export const EachTask: React.FC<IEachTask> = ({task}) => {
         <div
             onClick={() => {
                 dispatch({
-                    type: "GET_ID_EACH_TASK",
+                    type: "GET_EACH_TASK",
                     payload: task,
                 });
                 dispatch({

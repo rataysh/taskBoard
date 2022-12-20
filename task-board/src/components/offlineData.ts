@@ -4,7 +4,7 @@ import moment from "moment";
 import {IProject} from "./interface/IProject";
 import {ITask, IComment} from "./interface/ITask";
 
-export const testTask: ITask[] = [
+const testTask: ITask[] = [
     {
         id: 0,
         title: "Discussion",
@@ -79,6 +79,39 @@ export const testTask: ITask[] = [
     },
 ];
 
+ const secondTestTask: ITask[] = [
+    {
+        id: 0,
+        title: "Meeting with QA",
+        description: "Conf call with QA engineer on Monday",
+        dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+        precedence: "low",
+        status: 0,
+        comments: [
+            {
+                id: 0,
+                text: "First test comment",
+                dateCreate: moment(Date.now()).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                ),
+            },
+        ],
+        subTasks: [
+            {
+                id: 1,
+                title: "Sub-task for Dev",
+                description: "Create logic",
+                dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+                precedence: "low",
+                status: 1,
+                // timeDuringWork?: number,
+                // dateEnd?: number,
+                // file?: File,
+            },
+        ],
+    },
+];
+
 export const dataProject: IProject[] = [
     {
         id: 1,
@@ -92,7 +125,7 @@ export const dataProject: IProject[] = [
         title: "JavaScript project",
         description: "This is a news site project (React + JavaScript)",
         status: 0,
-        tasks: testTask,
+        tasks: secondTestTask,
     },
     {
         id: 3,

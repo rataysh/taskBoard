@@ -54,6 +54,7 @@ export const CreateNewProjectModal: React.FC<ICreateNewProjectModal> = ({
                         ? "-"
                         : discription,
                 status: 0,
+                tasks: [],
             },
         });
         setActive(!active);
