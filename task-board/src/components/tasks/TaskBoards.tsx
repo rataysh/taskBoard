@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import "../../styles/tasksBoard.scss";
 import {ITask} from "../interface/ITask";
 // import {EachTask} from "./EachTask";
-import {EachTaskModal} from "./EachTaskModal";
+import {EachTaskModal} from "./popUpWindows/EachTaskModal";
 import {EachBoard} from "./EachBoard";
 // import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";

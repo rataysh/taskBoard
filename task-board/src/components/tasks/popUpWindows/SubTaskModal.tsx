@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import {ITask} from "../interface/ITask";
+import {ITask} from "../../interface/ITask";
 import {EachTaskModal} from "./EachTaskModal";
 
 interface IEachSubTaskModal {

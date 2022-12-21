@@ -3,18 +3,20 @@
 import React from "react";
 import {GrClose} from "react-icons/gr";
 import {useDispatch} from "react-redux";
-// import Popup from "reactjs-popup";
 import "../../styles/delProjModal.scss";
 import {IProject} from "../interface/IProject";
+import {ITask} from "../interface/ITask";
 
-interface IDelProjectModal {
+interface IDelConfirmProjectModal {
     project: IProject;
+    // task?: ITask;
     active: boolean;
     setActive: (active: boolean) => void;
 }
 
-export const DelProjectModal: React.FC<IDelProjectModal> = ({
-    project: task,
+export const DelConfirmProjectModal: React.FC<IDelConfirmProjectModal> = ({
+    project,
+    // task,
     active,
     setActive,
 }) => {
@@ -23,9 +25,16 @@ export const DelProjectModal: React.FC<IDelProjectModal> = ({
     const projectDelite = () => {
         dispatch({
             type: "DELETE_PROJECT",
-            payload: task,
+            payload: project,
         });
     };
+
+    // const taskDelite = () => {
+    //     dispatch({
+    //         type: "DELETE_PROJECT",
+    //         payload: task,
+    //     });
+    // };
 
     return (
         <>

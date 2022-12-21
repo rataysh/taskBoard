@@ -1,15 +1,16 @@
 /** @format */
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {MdEditNote} from "react-icons/md";
-import {ITask} from "../interface/ITask";
-import "../../styles/eachTaskModal.scss";
-import {EachComment} from "./EachComment";
-import {SubTask} from "./SubTask";
-import {SideBar} from "./SideBar";
+import {ITask} from "../../interface/ITask";
+import "../../../styles/eachTaskModal.scss";
+import {EachComment} from "../EachComment";
+import {SubTask} from "../SubTask";
+import {SideBar} from "../SideBar";
 import {useDispatch} from "react-redux";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {useLocation} from "react-router-dom";
 
 interface IEachTaskModal {
     task: ITask;
@@ -26,8 +27,18 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
 }) => {
     const [subTaskActive, setSubTaskActive] = useState<boolean>(false);
     const dispatch = useDispatch();
-    // const eachTaskActive = useTypedSelector((state) => state.modalView);
-    // const testTask = useTypedSelector((state) => state.eachTask);
+
+    const certainProject = useLocation();
+    const allProject = useTypedSelector((state) => state.projects);
+    const [eachProjectTasksSub, setEachProjectTasksSub] = useState<ITask>(task);
+
+    useEffect(() => {
+        let eachProjectSub: ITask = allProject
+            .filter((proj) => proj.id === certainProject.state.id)[0]
+            .tasks.filter((tsk) => tsk.id === task.id)[0];
+        setEachProjectTasksSub(eachProjectSub);
+    }, [allProject]);
+
     const closeDispatch = () => {
         dispatch({
             type: "POP_UP_CLOSE_EACH_TASK",
@@ -91,7 +102,7 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                             ""
                         ) : (
                             <SubTask
-                                task={task}
+                                task={eachProjectTasksSub}
                                 subTaskActive={subTaskActive}
                                 setSubTaskActive={setSubTaskActive}
                             />

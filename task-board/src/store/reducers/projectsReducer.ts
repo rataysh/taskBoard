@@ -9,6 +9,8 @@ enum ActionString {
     DELETE_PROJECT = "DELETE_PROJECT",
     ADD_TASK = "ADD_TASK",
     DELETE_TASK = "DELETE_TASK",
+    ADD_SUB_TASK = "ADD_SUB_TASK",
+    DELETE_SUB_TASK = "DELETE_SUB_TASK",
 }
 
 interface ActionProjectsAdd {
@@ -31,14 +33,37 @@ interface ActionTaskAdd {
 
 interface ActionTaskDelete {
     type: ActionString.DELETE_TASK;
-    payload: ITask;
+    payload: {
+        projectId: number;
+        task: ITask;
+    };
+}
+
+interface ActionSubTaskAdd {
+    type: ActionString.ADD_SUB_TASK;
+    payload: {
+        projectId: number;
+        task: ITask;
+        subTask: ITask;
+    };
+}
+
+interface ActionSubTaskDelete {
+    type: ActionString.DELETE_SUB_TASK;
+    payload: {
+        projectId: number;
+        task: ITask;
+        subTask: ITask;
+    };
 }
 
 type ActionProjects =
     | ActionProjectsAdd
     | ActionProjectsDel
     | ActionTaskAdd
-    | ActionTaskDelete;
+    | ActionTaskDelete
+    | ActionSubTaskAdd
+    | ActionSubTaskDelete;
 
 const initialState: IProject[] = dataProject;
 
@@ -71,10 +96,83 @@ export const projectsReducer = (
                 },
             ];
         case ActionString.DELETE_TASK:
+            return [
+                ...state.filter(
+                    (project) => project.id !== action.payload.projectId
+                ),
+                {
+                    ...state.filter(
+                        (project) => project.id === action.payload.projectId
+                    )[0],
+                    tasks: [
+                        ...state.filter(
+                            (project) => project.id !== action.payload.projectId
+                        )[0].tasks,
+                    ],
+                },
+            ];
+
+        case ActionString.ADD_SUB_TASK:
             return state;
-        // return [
-        //     ...state.filter((project) => project.id !== action.payload.id),
-        // ];
+        //  return [
+        //      ...state.filter(
+        //          (project) => project.id !== action.payload.projectId
+        //      ),
+        //      {
+        //          ...state.filter(
+        //              (project) => project.id === action.payload.projectId
+        //          )[0],
+        //          tasks: [
+        //              ...state.filter(
+        //                  (project) =>
+        //                      project.id === action.payload.projectId
+        //              )[0].tasks,
+        //              action.payload.task,
+        //          ],
+        //      },
+        //  ];
+        case ActionString.DELETE_SUB_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.task.id
+                                      ? task
+                                      : {
+                                            ...task,
+                                            subTasks: task.subTasks?.filter(
+                                                (sub) =>
+                                                    sub.id !==
+                                                    action.payload.subTask.id
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+                // ...state.filter(
+                //     (project) => project.id !== action.payload.projectId
+                // ),
+
+                // ...state.filter(
+                //     (project) => project.id === action.payload.projectId
+                // )[0],
+                // tasks: [
+                //     ...state.filter(
+                //         (project) => project.id === action.payload.projectId
+                //     )[0].tasks,
+                //     ...state.filter(
+                //         (project) => project.id === action.payload.projectId
+                //     )[0].tasks,
+
+                // .tasks.filter(
+                //     (task) => task.id !== action.payload.task.id
+                // ),
+                // ],
+                // },
+            ];
         default:
             return state;
     }

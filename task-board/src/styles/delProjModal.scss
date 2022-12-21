@@ -2,9 +2,9 @@
 
 @import "./varCSS";
 
-/** @format */
-
-@import "./varCSS";
+.modal__wrapper {
+    @extend %modal__wrapper;
+}
 
 .modal__wrapper.open {
     @extend %modal__open;

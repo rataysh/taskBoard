@@ -3,11 +3,32 @@
 @import "./varCSS";
 
 
+.modal__wrapper {
+    // position: fixed;
+    // left: 0;
+    // bottom: 0;
+    // width: 100%;
+    // background: rgba($color: #000000, $alpha: 0.3);
+    // backdrop-filter: blur(6px);
+}
+
+.modal__open {
+    // height: 100%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // overflow-y: scroll;
+    // &::-webkit-scrollbar {
+    //     width: 0;
+    // }
+}
+
 .modalContainer {
     position: fixed;
     top: 2rem;
     left: 25%;
     width: 100%;
+
     @include breakpoint(md) {
         left: 10%;
     }

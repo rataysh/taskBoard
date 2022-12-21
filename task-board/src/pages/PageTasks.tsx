@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from "react";
 import {ButtonAdd} from "../components/ButtonAdd";
 import {AboutMe} from "../components/footer/footer";
-import {CreateNewTaskModal} from "../components/tasks/CreateNewTaskModal";
+import {CreateNewTaskModal} from "../components/tasks/popUpWindows/CreateNewTaskModal";
 import {TaskBoards} from "../components/tasks/TaskBoards";
 import "../styles/projects.scss";
 import "../styles/createNewModal.scss";

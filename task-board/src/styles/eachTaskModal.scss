@@ -153,7 +153,7 @@
                 display: flex;
                 gap: 0.5rem;
                 font-size: 22px;
-                font-weight: 400;
+                font-weight: 500;
                 margin-bottom: 0.5rem;
             }
             div.description {
@@ -176,41 +176,15 @@
             }
         }
 
-        div.sub {
+        div.displaySub {
             margin-top: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
 
-            p {
-                font-size: 22px;
-                font-weight: 400;
-            }
-            div.eachSub {
+            div.sub {
+                margin-top: 1rem;
                 display: flex;
-
-                div {
-                    background-color: $light-color;
-                    gap: 1rem;
-                    padding: 0.5rem;
-                    border-radius: 3px;
-                    cursor: pointer;
-                    font-size: 18px;
-                    padding-right: 15px;
-                }
-                div.closeIcon {
-                    background-color: $blue-color;
-                    border-top-left-radius: 0;
-                    border-bottom-left-radius: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 14px;
-                    padding-left: 8px;
-                    padding-right: 8px;
-                    border-left: 1px dotted;
-                }
+                align-items: center;
+                gap: 1rem;
+                flex-wrap: wrap;
             }
         }
 
@@ -276,4 +250,35 @@
 
 .sub__task__wrapper {
     z-index: 20;
+}
+
+.eachSub {
+    display: flex;
+
+    .subHeaderText {
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    div {
+        background-color: $light-color;
+        gap: 1rem;
+        padding: 0.5rem;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 16px;
+        padding-right: 15px;
+    }
+    div.closeIcon {
+        background-color: $blue-color;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border-left: 1px dotted;
+    }
 }

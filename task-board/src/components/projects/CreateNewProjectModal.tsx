@@ -6,6 +6,8 @@ import {GrClose} from "react-icons/gr";
 import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {idAdd} from "../../logic/idAdd";
+import { checkDescription } from "../../logic/checkDescription";
+import { checkName } from "../../logic/checkName";
 
 interface ICreateNewProjectModal {
     active: boolean;
@@ -17,7 +19,7 @@ export const CreateNewProjectModal: React.FC<ICreateNewProjectModal> = ({
     setActive,
 }) => {
     const [name, setName] = useState<string>("");
-    const [discription, setDiscription] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
     // check condition for UNLOCK button "Creeat new project"
     const [valid, setValid] = useState<boolean>(false);
     //  all previous redux projects for CREATE NEW ID
@@ -28,17 +30,15 @@ export const CreateNewProjectModal: React.FC<ICreateNewProjectModal> = ({
     const inputName = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
         //  Check correct name for projects and unlock button
-        name !== "" && name.replace(/\s+/, "") !== ""
-            ? setValid(true)
-            : setValid(false);
+        checkName(name) ? setValid(true) : setValid(false);
     };
 
     const inputDiscription = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        setDiscription(event.target.value);
+        setDescription(event.target.value);
     };
 
     const clearInput = () => {
-        setDiscription("");
+        setDescription("");
         setName("");
         setValid(false);
     };
@@ -49,10 +49,7 @@ export const CreateNewProjectModal: React.FC<ICreateNewProjectModal> = ({
             payload: {
                 id: idAdd(dataProject),
                 title: name,
-                description:
-                    discription === "" || discription.replace(/\s+/, "") === ""
-                        ? "-"
-                        : discription,
+                description: checkDescription(description),
                 status: 0,
                 tasks: [],
             },
@@ -84,7 +81,7 @@ export const CreateNewProjectModal: React.FC<ICreateNewProjectModal> = ({
                 <div>
                     <p>Description</p>
                     <textarea
-                        value={discription}
+                        value={description}
                         onChange={inputDiscription}
                         placeholder='My project description...'></textarea>
                 </div>

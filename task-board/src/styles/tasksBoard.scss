@@ -29,6 +29,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    overflow: auto;
+    
+    &::-webkit-scrollbar {
+            width: 0;
+        }
+    
     padding: 1rem;
     gap: 1rem;
     min-width: 225px;
@@ -56,7 +62,7 @@
         padding: 1rem;
         gap: 1rem;
         cursor: pointer;
-
+        // position: relative;
         width: 100%;
 
         background: #ffffff;
@@ -89,7 +95,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            
+
             p {
                 @extend %fontDate;
                 display: flex;

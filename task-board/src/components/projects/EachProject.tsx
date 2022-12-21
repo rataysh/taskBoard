@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import "../../styles/eachProject.scss";
 import {IProject} from "../interface/IProject";
 import {MdOutlineDeleteForever} from "react-icons/md";
-import {DelProjectModal} from "./DelProjectModal";
+import {DelConfirmProjectModal} from "./DelConfirmProjectModal";
 import {useDispatch} from "react-redux";
 
 interface IEachProjects {
@@ -49,7 +49,7 @@ export const EachProject: React.FC<IEachProjects> = ({project}) => {
                 </div>
             </Link>
             <>
-                <DelProjectModal
+                <DelConfirmProjectModal
                     project={project}
                     active={active}
                     setActive={setActive}
