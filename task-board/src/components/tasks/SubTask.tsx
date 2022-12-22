@@ -22,7 +22,7 @@ export const SubTask: React.FC<IEachSubTask> = ({
     setSubTaskActive,
 }) => {
     const [idSub, setIdSub] = useState<number | null>(null);
-    const [createNewSubTask, setCreateNewSubTask] = useState<boolean>(false);
+    // const [createNewSubTask, setCreateNewSubTask] = useState<boolean>(false);
     const dispatch = useDispatch();
     const certainProject = useLocation();
 
@@ -37,59 +37,72 @@ export const SubTask: React.FC<IEachSubTask> = ({
         });
     };
 
+    const openSubTaskModal = () => {
+        dispatch({
+            type: "POP_UP_OPEN_SUB_TASK",
+        });
+        dispatch({
+            type: "SUB_TASK_GET_ID",
+            payload: task.id,
+        });
+    };
+
     return (
-        <div className='displaySub'>
-            <div className='eachSub'>
-                <div className='subHeaderText'>Sub-tasks</div>
-                <div className='closeIcon'>
-                    <MdPlaylistAdd
-                        className='subHeaderText'
-                        onClick={() => setCreateNewSubTask(!createNewSubTask)}
-                    />
+        <>
+            <div className='displaySub'>
+                <div className='eachSub'>
+                    <div className='subHeaderText'>Sub-tasks</div>
+                    <div className='closeIcon'>
+                        <MdPlaylistAdd
+                            className='subHeaderText'
+                            onClick={openSubTaskModal}
+                        />
+                    </div>
+                </div>
+                <div className='sub'>
+                    {(task.subTasks?.length ?? 0) > 0 &&
+                        task.subTasks?.map((sub) => (
+                            <>
+                                <div className='eachSub'>
+                                    <div
+                                        key={sub.id}
+                                        onClick={() => {
+                                            setIdSub(sub.id);
+                                            setSubTaskActive(!subTaskActive);
+                                        }}>
+                                        {sub.title}
+                                    </div>
+                                    <div className='closeIcon'>
+                                        <GrClose
+                                            onClick={() => delSubTask(sub)}
+                                        />
+                                    </div>
+                                </div>
+                            </>
+                        ))}
+
+                    <>
+                        {idSub !== null && (
+                            <SubTaskModal
+                                task={
+                                    task.subTasks!.filter(
+                                        (sub) => sub.id === idSub
+                                    )[0]
+                                }
+                                subTaskActive={subTaskActive}
+                                setSubTaskActive={setSubTaskActive}
+                            />
+                        )}
+
+                        {/* <CreateNewTaskModal
+                            active={createNewSubTask}
+                            setActive={setCreateNewSubTask}
+                            tasks={certainProject.state.tasks}
+                            subFlag={true}
+                        /> */}
+                    </>
                 </div>
             </div>
-            <div className='sub'>
-                {(task.subTasks?.length ?? 0) > 0 &&
-                    task.subTasks?.map((sub) => (
-                        <>
-                            <div className='eachSub'>
-                                <div
-                                    key={sub.id}
-                                    onClick={() => {
-                                        setIdSub(sub.id);
-                                        setSubTaskActive(!subTaskActive);
-                                    }}>
-                                    {sub.title}
-                                </div>
-                                <div className='closeIcon'>
-                                    <GrClose onClick={() => delSubTask(sub)} />
-                                </div>
-                            </div>
-                        </>
-                    ))}
-
-                <>
-                    {idSub !== null && (
-                        <SubTaskModal
-                            task={
-                                task.subTasks!.filter(
-                                    (sub) => sub.id === idSub
-                                )[0]
-                            }
-                            subTaskActive={subTaskActive}
-                            setSubTaskActive={setSubTaskActive}
-                        />
-                    )}
-                </>
-            </div>
-            <>
-                <CreateNewTaskModal
-                    active={createNewSubTask}
-                    setActive={setCreateNewSubTask}
-                    tasks={certainProject.state.tasks}
-                    subFlag={true}
-                />
-            </>
-        </div>
+        </>
     );
 };

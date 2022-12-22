@@ -8,13 +8,14 @@ import {checkName} from "../../../logic/checkName";
 import {newTask} from "../../../logic/newTask";
 import {ITask} from "../../interface/ITask";
 import {CreateNewTaskComponent} from "./CreateNewTaskComponent";
-import "../../../styles/createNewModal.scss"
+// import "../../../styles/createNewModal.scss";
 
 interface ICreateNewTaskModal {
     active: boolean;
     setActive: (active: boolean) => void;
     tasks: ITask[];
     subFlag?: boolean;
+    taskIdForSub?: number;
 }
 
 export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
@@ -22,6 +23,7 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
     setActive,
     tasks,
     subFlag,
+    taskIdForSub,
 }) => {
     const [name, setName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -51,42 +53,81 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
         setStatus(0);
     };
 
-    const createNewTask = () => {
-        dispatch({
-            type: "ADD_TASK",
-            payload: {
-                projectId: certainProject.state.id,
-                task: newTask(tasks, name, description, precedence, status),
-            },
-        });
+    const createNewTask = (subFlag: boolean | undefined) => {
+        console.log(taskIdForSub !== undefined ? tasks[taskIdForSub] : "UND");
+        subFlag !== undefined && subFlag
+            ? dispatch({
+                  type: "ADD_SUB_TASK",
+                  payload: {
+                      projectId: certainProject.state.id,
+                      task: tasks[taskIdForSub ?? 0],
+                      subTask: newTask(
+                          //   taskIdForSub !== undefined &&
+                          //       tasks[taskIdForSub] !== undefined
+                          //       ? tasks[taskIdForSub ?? 0].subTasks
+                          //       : 0,
+                          tasks[taskIdForSub ?? 0].subTasks ?? [].length >= 1
+                              ? tasks[taskIdForSub ?? 0].subTasks ?? []
+                              : 0,
+                          name,
+                          description,
+                          precedence,
+                          status
+                      ),
+                  },
+              })
+            : dispatch({
+                  type: "ADD_TASK",
+                  payload: {
+                      projectId: certainProject.state.id,
+                      task: newTask(
+                          tasks.length >= 1 ? tasks : 0,
+                          name,
+                          description,
+                          precedence,
+                          status
+                      ),
+                  },
+              });
 
+        dispatch({
+            type: "POP_UP_CLOSE_SUB_TASK",
+        });
         setActive(!active);
         clearInput();
     };
 
     return (
-        <div className={`modal__wrapper ${active ? "open" : "close"}`}>
-            <div className='modalContainer'>
-                <div className='modalBody modalBodyTask'>
-                    <span onClick={() => setActive(!active)}>
-                        <GrClose />
-                    </span>
-                    <CreateNewTaskComponent
-                        name={name}
-                        description={description}
-                        changeName={inputName}
-                        changeDescription={inputDiscription}
-                        setPrecedence={setPrecedence}
-                        setStatus={setStatus}
-                    />
-                    <button
-                        disabled={!valid}
-                        className='effect'
-                        onClick={createNewTask}>
-                        CREATE
-                    </button>
+        <>
+            <div className={`modal_wrapper ${active ? "open" : "close"}`}>
+                <div className='modalContainer'>
+                    <div className='modalBody modalBodyTask'>
+                        <span
+                            onClick={() => {
+                                dispatch({
+                                    type: "POP_UP_CLOSE_SUB_TASK",
+                                });
+                                setActive(!active);
+                            }}>
+                            <GrClose />
+                        </span>
+                        <CreateNewTaskComponent
+                            name={name}
+                            description={description}
+                            changeName={inputName}
+                            changeDescription={inputDiscription}
+                            setPrecedence={setPrecedence}
+                            setStatus={setStatus}
+                        />
+                        <button
+                            disabled={!valid}
+                            className='effect'
+                            onClick={() => createNewTask(subFlag)}>
+                            CREATE
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };

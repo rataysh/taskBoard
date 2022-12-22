@@ -2,26 +2,26 @@
 
 @import "./varCSS";
 
+// .create__new__wrapper {
+//     @extend %modal__open;
+//     background: rgba(white, $alpha: 0.8);
+//     z-index: 40;
+// }
 
-.modal__wrapper {
-    // position: fixed;
-    // left: 0;
-    // bottom: 0;
-    // width: 100%;
-    // background: rgba($color: #000000, $alpha: 0.3);
-    // backdrop-filter: blur(6px);
+.modal_wrapper {
+    @extend %modal__wrapper;
+    z-index: 20;
 }
 
-.modal__open {
-    // height: 100%;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // overflow-y: scroll;
-    // &::-webkit-scrollbar {
-    //     width: 0;
-    // }
+.modal_wrapper.open {
+    @extend %modal__open;
+    z-index: 20;
 }
+
+.modal_wrapper.close {
+    @extend %modal__close;
+}
+
 
 .modalContainer {
     position: fixed;
@@ -58,7 +58,7 @@
         top: 1rem;
         right: 1rem;
         align-self: end;
-        z-index: 10;
+        z-index: 30;
 
         &:hover {
             opacity: 0.7;
@@ -108,9 +108,9 @@
 }
 
 .modalBodyTask {
-    height: 95%;
-    margin-top: 2%;
-    padding-top: 1rem;
+    // height: 95%;
+    // margin-top: 2%;
+    // padding-top: 1rem;
 }
 
 // radio button css style (precedence and status)
@@ -242,7 +242,7 @@ div.file {
             font-size: 16px;
             line-height: $height;
             padding: 0 15px;
-             border-radius: 0 5px 5px 0;
+            border-radius: 0 5px 5px 0;
             text-transform: uppercase;
             // pointer-events: none;
         }

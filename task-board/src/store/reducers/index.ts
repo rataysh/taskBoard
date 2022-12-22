@@ -5,6 +5,8 @@ import {eachTaskReducer} from "./eachTaskReducer";
 import {modalViewReducer} from "./modalViewReducer";
 import {taskBoardDataReducer} from "./taskBoardDataReducer";
 import {projectsReducer} from "./projectsReducer";
+import {subTaskViewReducer} from "./subTask/subTaskViewReducer";
+import {idForSubTaskReducer} from "./subTask/idForSubTaskReducer";
 
 import {persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -14,6 +16,8 @@ export const rootResucer = combineReducers({
     eachTask: eachTaskReducer,
     modalView: modalViewReducer,
     taskBoardData: taskBoardDataReducer,
+    subTaskView: subTaskViewReducer,
+    idForSubTask: idForSubTaskReducer,
 });
 
 const persistConfig = {

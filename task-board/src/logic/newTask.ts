@@ -6,14 +6,15 @@ import {checkDescription} from "./checkDescription";
 import {idAdd} from "./idAdd";
 
 export const newTask = (
-    tasks: ITask[],
+    tasks: ITask[] | number,
     name: string,
     description: string,
     precedence: string,
     status: number
 ) => {
+    let id = typeof tasks === "number" ? 0 : idAdd(tasks);
     return {
-        id: idAdd(tasks),
+        id: id,
         title: name,
         description: checkDescription(description),
         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
