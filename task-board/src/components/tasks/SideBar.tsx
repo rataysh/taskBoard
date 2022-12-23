@@ -5,7 +5,7 @@ import {MdAttachFile, MdEditNote} from "react-icons/md";
 import {ITask} from "../interface/ITask";
 
 interface ISideBar {
-    task: ITask;
+    task?: ITask;
 }
 
 export const SideBar: React.FC<ISideBar> = ({task}) => {
@@ -13,14 +13,14 @@ export const SideBar: React.FC<ISideBar> = ({task}) => {
         <div className='sideBar'>
             <div>
                 <div className='divHead'>Task number</div>
-                <div>{task.id}</div>
+                <div>{task?.id ?? ""}</div>
             </div>
             <div>
                 <div className='divHead'>Status</div>
                 <div>
-                    {task.status === 0
+                    {task?.status === 0
                         ? "Queue"
-                        : task.status === 1
+                        : task?.status === 1
                         ? "Development"
                         : "Done"}
                     <MdEditNote className='changeIcon' onClick={() => {}} />
@@ -28,15 +28,15 @@ export const SideBar: React.FC<ISideBar> = ({task}) => {
             </div>
             <div>
                 <div className='divHead'>Create date</div>
-                <div>{task.dateCreate}</div>
+                <div>{task?.dateCreate}</div>
             </div>
             <div>
                 <div className='divHead'>Working time</div>
-                <div>{task.dateCreate}</div>
+                <div>{task?.dateCreate}</div>
             </div>
             <div>
                 <div className='divHead'>End Date</div>
-                <div>{task.dateCreate}</div>
+                <div>{task?.dateCreate}</div>
             </div>
             <div>
                 <div className='divHead'>Attached files</div>

@@ -54,21 +54,16 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
     };
 
     const createNewTask = (subFlag: boolean | undefined) => {
-        console.log(taskIdForSub !== undefined ? tasks[taskIdForSub] : "UND");
+        // console.log(tasks.filter((task) => task.id === taskIdForSub)[0].subTasks);
         subFlag !== undefined && subFlag
             ? dispatch({
                   type: "ADD_SUB_TASK",
                   payload: {
                       projectId: certainProject.state.id,
-                      task: tasks[taskIdForSub ?? 0],
+                      task: tasks.filter((task) => task.id === taskIdForSub)[0],
                       subTask: newTask(
-                          //   taskIdForSub !== undefined &&
-                          //       tasks[taskIdForSub] !== undefined
-                          //       ? tasks[taskIdForSub ?? 0].subTasks
-                          //       : 0,
-                          tasks[taskIdForSub ?? 0].subTasks ?? [].length >= 1
-                              ? tasks[taskIdForSub ?? 0].subTasks ?? []
-                              : 0,
+                          tasks.filter((task) => task.id === taskIdForSub)[0]
+                              .subTasks ?? 0,
                           name,
                           description,
                           precedence,

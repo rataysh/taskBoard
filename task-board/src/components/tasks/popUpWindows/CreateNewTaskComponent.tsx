@@ -43,6 +43,7 @@ export const CreateNewTaskComponent: React.FC<ICreateNewTaskComponent> = ({
                     <input
                         id='radioPrecedence-1'
                         name='radioPrecedence'
+                        // checked={true}
                         type='radio'
                         value={"low"}
                         onChange={(e) => {
@@ -90,6 +91,7 @@ export const CreateNewTaskComponent: React.FC<ICreateNewTaskComponent> = ({
                     <input
                         id='radioStatus-1'
                         name='radioStatus'
+                        // checked={true}
                         type='radio'
                         value={0}
                         onChange={(e) => {

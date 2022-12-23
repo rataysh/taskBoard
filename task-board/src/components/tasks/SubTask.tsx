@@ -8,7 +8,6 @@ import {ITask} from "../interface/ITask";
 import {SubTaskModal} from "./popUpWindows/SubTaskModal";
 import "../../styles/eachTaskModal.scss";
 import {useLocation} from "react-router-dom";
-import {CreateNewTaskModal} from "./popUpWindows/CreateNewTaskModal";
 
 interface IEachSubTask {
     task: ITask;

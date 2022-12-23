@@ -4,11 +4,8 @@ import React, {useState} from "react";
 import {BsCalendar} from "react-icons/bs";
 import {MdOutlineDeleteForever} from "react-icons/md";
 import {useDispatch} from "react-redux";
-// import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useLocation} from "react-router-dom";
 import {ITask} from "../interface/ITask";
-import {DelConfirmProjectModal} from "../projects/DelConfirmProjectModal";
-import {DelConfirmTaskModal} from "./popUpWindows/DelConfirmTaskModal";
-// import {EachTaskModal} from "./EachTaskModal";
 
 interface IEachTask {
     task: ITask;
@@ -17,8 +14,18 @@ interface IEachTask {
 export const EachTask: React.FC<IEachTask> = ({task}) => {
     const [delActive, setDelActive] = useState<boolean>(false);
     const dispatch = useDispatch();
-    // const eachTaskActive = useTypedSelector((state) => state.modalView);
-    // const testTask = useTypedSelector((state) => state.eachTask);
+    const certainProject = useLocation();
+
+    const deleteTask = () => {
+        // console.log(task);
+        dispatch({
+            type: "DELETE_TASK",
+            payload: {
+                projectId: certainProject.state.id,
+                task: task,
+            },
+        });
+    };
 
     return (
         <>
@@ -34,15 +41,16 @@ export const EachTask: React.FC<IEachTask> = ({task}) => {
                     // console.log(eachTaskActive);
                     // console.log(testTask);
                 }}>
-                {/* <MdOutlineDeleteForever
+                <MdOutlineDeleteForever
                     className='del'
                     onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        // // e.nativeEvent.stopImmediatePropagation();
+
+                        deleteTask();
                         setDelActive(!delActive);
                     }}
-                /> */}
+                />
                 <h6>{task.precedence + " priority"}</h6>
                 <h4>{task.title}</h4>
                 <h5>{task.description}</h5>

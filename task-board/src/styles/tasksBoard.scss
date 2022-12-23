@@ -30,7 +30,7 @@
     flex-direction: column;
     align-items: flex-start;
     overflow: auto;
-    
+
     &::-webkit-scrollbar {
             width: 0;
         }
@@ -62,7 +62,7 @@
         padding: 1rem;
         gap: 1rem;
         cursor: pointer;
-        // position: relative;
+        position: relative;
         width: 100%;
 
         background: #ffffff;

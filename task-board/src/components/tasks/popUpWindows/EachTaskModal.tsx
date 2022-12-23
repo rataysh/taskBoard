@@ -13,7 +13,7 @@ import {useTypedSelector} from "../../../hooks/useTypedSelector";
 import {useLocation} from "react-router-dom";
 
 interface IEachTaskModal {
-    task: ITask;
+    task?: ITask;
     active: boolean;
     setActive?: (active: boolean) => void;
     subTaskFlag: boolean;
@@ -30,12 +30,12 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
 
     const certainProject = useLocation();
     const allProject = useTypedSelector((state) => state.projects);
-    const [eachProjectTasksSub, setEachProjectTasksSub] = useState<ITask>(task);
+    const [eachProjectTasksSub, setEachProjectTasksSub] = useState<ITask>(task!);
 
     useEffect(() => {
         let eachProjectSub: ITask = allProject
             .filter((proj) => proj.id === certainProject.state.id)[0]
-            .tasks.filter((tsk) => tsk.id === task.id)[0];
+            .tasks.filter((tsk) => tsk.id === task?.id)[0];
         setEachProjectTasksSub(eachProjectSub);
     }, [allProject]);
 
@@ -67,7 +67,7 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                         <header>
                             <div className='head'>
                                 <p>{subTaskFlag && "Sub-task:"}</p>
-                                <p>{task.title}</p>
+                                <p>{task?.title ?? ""}</p>
                                 <MdEditNote
                                     className='changeIcon'
                                     onClick={() => {}}
@@ -75,14 +75,14 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                             </div>
 
                             <div className='prior'>
-                                <p>{task.precedence + " priority"}</p>
+                                <p>{task?.precedence ?? "" + " priority"}</p>
                                 <MdEditNote
                                     className='changeIcon'
                                     onClick={() => {}}
                                 />
                             </div>
                         </header>
-                        <SideBar task={task} />
+                        <SideBar task={task!} />
 
                         <div className='container'>
                             <div className='headerDecription'>
@@ -93,7 +93,7 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                                 />
                             </div>
                             <div className='description' onClick={() => {}}>
-                                <p>{task.description}</p>
+                                <p>{task?.description ?? ""}</p>
                             </div>
                         </div>
 
@@ -111,8 +111,8 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                             <p>Comments</p>
                             <textarea placeholder='Write you comment...'></textarea>
 
-                            {(task.comments?.length ?? 0) > 0
-                                ? task.comments?.map((comment) => (
+                            {(task?.comments?.length ?? 0) > 0
+                                ? task?.comments?.map((comment) => (
                                       <EachComment
                                           key={comment.id}
                                           comment={comment}

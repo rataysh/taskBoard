@@ -97,20 +97,32 @@ export const projectsReducer = (
             ];
         case ActionString.DELETE_TASK:
             return [
-                ...state.filter(
-                    (project) => project.id !== action.payload.projectId
-                ),
-                {
-                    ...state.filter(
-                        (project) => project.id === action.payload.projectId
-                    )[0],
-                    tasks: [
-                        ...state.filter(
-                            (project) => project.id !== action.payload.projectId
-                        )[0].tasks,
-                    ],
-                },
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.filter(
+                                  (task) => task.id !== action.payload.task.id
+                              ),
+                          };
+                }),
             ];
+        // return [
+        //     ...state.filter(
+        //         (project) => project.id !== action.payload.projectId
+        //     ),
+        //     {
+        //         ...state.filter(
+        //             (project) => project.id === action.payload.projectId
+        //         )[0],
+        //         tasks: [
+        //             ...state.filter(
+        //                 (project) => project.id === action.payload.projectId
+        //             )[0].tasks,
+        //         ],
+        //     },
+        // ];
 
         case ActionString.ADD_SUB_TASK:
             return [
