@@ -156,13 +156,14 @@
                 font-weight: 500;
                 margin-bottom: 0.5rem;
             }
-            div.description {
+            textarea.description {
                 display: flex;
                 flex-direction: row;
                 padding: 0.5rem;
                 font-size: 18px;
                 min-height: 250px;
                 height: 100%;
+                width: 100%;
                 background-color: white;
                 overflow-y: scroll;
                 box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.16);

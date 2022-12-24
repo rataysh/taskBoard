@@ -38,13 +38,13 @@ export const SideBar: React.FC<ISideBar> = ({task}) => {
                 <div className='divHead'>End Date</div>
                 <div>{task?.dateCreate}</div>
             </div>
-            <div>
+            {/* <div>
                 <div className='divHead'>Attached files</div>
                 <div>
                     {0}
                     <MdAttachFile />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -4,7 +4,7 @@ import {combineReducers} from "redux";
 import {eachTaskReducer} from "./taskBoard/eachTaskReducer";
 import {modalViewReducer} from "./modalViewReducer";
 import {taskBoardDataReducer} from "./taskBoard/taskBoardDataReducer";
-import {projectsReducer} from "./projectsReducer";
+import {projectsReducer} from "./mainReducer/projectsReducer";
 import {subTaskViewReducer} from "./subTask/subTaskViewReducer";
 import {idForSubTaskReducer} from "./subTask/idForSubTaskReducer";
 import {modalViewDelTaskReducer} from "./delTask/modalViewDelTask";

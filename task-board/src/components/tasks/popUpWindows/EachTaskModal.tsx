@@ -30,7 +30,9 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
 
     const certainProject = useLocation();
     const allProject = useTypedSelector((state) => state.projects);
-    const [eachProjectTasksSub, setEachProjectTasksSub] = useState<ITask>(task!);
+    const [eachProjectTasksSub, setEachProjectTasksSub] = useState<ITask>(
+        task!
+    );
 
     useEffect(() => {
         let eachProjectSub: ITask = allProject
@@ -47,6 +49,29 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
         dispatch({
             type: "CLEAR_TASK",
         });
+    };
+
+    // For change description
+    const [descriptonValue, setDescriptonValue] = useState<string>(
+        task?.description ?? ""
+    );
+    const [chekChangesDescription, setChekChangesDescription] =
+        useState<boolean>(false);
+    useEffect(() => {
+        setChekChangesDescription(descriptonValue !== task?.description);
+    }, [descriptonValue]);
+
+    const saveChangeDescription = () => {
+        dispatch({
+            type: "CHANGE_DESCRIPTION_TASK",
+            payload: {
+                projectId: certainProject.state.id,
+                task: task,
+                description: descriptonValue,
+            },
+        });
+        
+        setChekChangesDescription(false)
     };
 
     return (
@@ -83,7 +108,6 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                             </div>
                         </header>
                         <SideBar task={task!} />
-
                         <div className='container'>
                             <div className='headerDecription'>
                                 <p>Description</p>
@@ -92,9 +116,17 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                                     onClick={() => {}}
                                 />
                             </div>
-                            <div className='description' onClick={() => {}}>
-                                <p>{task?.description ?? ""}</p>
-                            </div>
+                            <textarea
+                                value={descriptonValue}
+                                className='description'
+                                onChange={(e) => {
+                                    setDescriptonValue(e.target.value);
+                                }}></textarea>
+                            {chekChangesDescription && (
+                                <button onClick={saveChangeDescription}>
+                                    save
+                                </button>
+                            )}
                         </div>
 
                         {/* Cheked this is sub-task or task */}
