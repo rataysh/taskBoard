@@ -10,6 +10,7 @@ import "../styles/createNewModal.scss";
 import {useLocation} from "react-router-dom";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {ITask} from "../components/interface/ITask";
+import { DelConfirmModal } from "../components/DelConfirmModal";
 
 export const PageTasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
@@ -29,9 +30,16 @@ export const PageTasks: React.FC = () => {
         setTaskIdForSub(chekTaskIdForSub);
     }, [chekTaskIdForSub]);
 
+    //Pop-up for confirm del Task
+    const [modalDeleteTask, setModalDeleteTask] = useState<boolean>(false);
+    const checkActiveModalDel = useTypedSelector((state) => state.modalViewDelTask);
+    useEffect(() => {
+        setModalDeleteTask(checkActiveModalDel);
+    }, [checkActiveModalDel]);
+
+    // For get allProjects data into reducer
     const allProject = useTypedSelector((state) => state.projects);
     const [eachProjectTasks, setEachProjectTasks] = useState<ITask[]>([]);
-
     useEffect(() => {
         let eachProject: ITask[] = allProject.filter(
             (proj) => proj.id === project.state.id
@@ -60,6 +68,11 @@ export const PageTasks: React.FC = () => {
                             tasks={eachProjectTasks}
                             taskIdForSub={taskIdForSub}
                             subFlag={true}
+                        />
+                        <DelConfirmModal
+                            delItem={false}
+                            active={modalDeleteTask}
+                            setActive={setModalDeleteTask}
                         />
                     </div>
                     <>

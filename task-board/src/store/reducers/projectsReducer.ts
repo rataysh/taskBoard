@@ -108,23 +108,7 @@ export const projectsReducer = (
                           };
                 }),
             ];
-        // return [
-        //     ...state.filter(
-        //         (project) => project.id !== action.payload.projectId
-        //     ),
-        //     {
-        //         ...state.filter(
-        //             (project) => project.id === action.payload.projectId
-        //         )[0],
-        //         tasks: [
-        //             ...state.filter(
-        //                 (project) => project.id === action.payload.projectId
-        //             )[0].tasks,
-        //         ],
-        //     },
-        // ];
-
-        case ActionString.ADD_SUB_TASK:
+          case ActionString.ADD_SUB_TASK:
             return [
                 ...state.map((proj) => {
                     return proj.id !== action.payload.projectId

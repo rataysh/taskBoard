@@ -12,18 +12,20 @@ interface IEachTask {
 }
 
 export const EachTask: React.FC<IEachTask> = ({task}) => {
-    const [delActive, setDelActive] = useState<boolean>(false);
+    // const [delActive, setDelActive] = useState<boolean>(false);
     const dispatch = useDispatch();
     const certainProject = useLocation();
 
     const deleteTask = () => {
-        // console.log(task);
         dispatch({
-            type: "DELETE_TASK",
+            type: "DEL_TASK_GET_ID_AND_TASK",
             payload: {
-                projectId: certainProject.state.id,
+                projId: certainProject.state.id,
                 task: task,
             },
+        });
+        dispatch({
+            type: "POP_UP_OPEN_DEL_TASK",
         });
     };
 
@@ -46,9 +48,7 @@ export const EachTask: React.FC<IEachTask> = ({task}) => {
                     onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-
                         deleteTask();
-                        setDelActive(!delActive);
                     }}
                 />
                 <h6>{task.precedence + " priority"}</h6>

@@ -1,11 +1,10 @@
 /** @format */
 
-import {ITask} from "../../components/interface/ITask";
+import {ITask} from "../../../components/interface/ITask";
 
 enum ActionString {
     GET_ALL_TASKS = "GET_ALL_TASKS",
 }
-
 
 interface ActionGetAllTasks {
     type: ActionString.GET_ALL_TASKS;

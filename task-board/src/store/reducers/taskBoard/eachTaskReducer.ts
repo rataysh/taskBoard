@@ -1,8 +1,8 @@
 /** @format */
 
 // import moment from "moment";
-import { useLocation } from "react-router-dom";
-import {ITask} from "../../components/interface/ITask";
+import {useLocation} from "react-router-dom";
+import {ITask} from "../../../components/interface/ITask";
 // import { testTask } from "../../components/offlineData";
 
 enum ActionString {
@@ -20,7 +20,6 @@ interface ActionEachTaskClearTask {
 }
 
 type ActionEachTask = ActionEachTaskFilterById | ActionEachTaskClearTask;
-
 
 const initialState: ITask[] = [];
 
