@@ -91,7 +91,7 @@
 
                 div.changeTitle {
                     width: 100%;
-     
+
                     textarea {
                         @extend %textArea;
                         font-size: xx-large;
@@ -217,19 +217,29 @@
             font-size: 22px;
             font-weight: 400;
 
-            textarea,
-            .allComments {
-                @extend %textArea;
-                padding: 1rem;
-                word-wrap: break-word;
+            .commentMain {
+                position: relative;
                 font-size: 14px;
                 font-weight: 300;
+                display: flex;
+                flex-direction: column;
 
-                &:focus {
-                    outline: none;
-                    border: 0.5px solid $blue-color;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
-                    padding: 1.5rem;
+                button {
+                    align-self: end;
+                }
+
+                textarea,
+                .allComments {
+                    @extend %textArea;
+                    padding: 1rem;
+                    word-wrap: break-word;
+
+                    &:focus {
+                        outline: none;
+                        border: 0.5px solid $blue-color;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+                        padding: 1.5rem;
+                    }
                 }
             }
         }
@@ -240,8 +250,12 @@
     gap: 0;
 
     .allComments {
+        @extend %textArea;
         font-size: 16px;
         position: relative;
+        padding: 1rem;
+        cursor: default;
+
         span {
             top: 0;
             right: 0;

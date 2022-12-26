@@ -72,7 +72,9 @@ export const SubTask: React.FC<IEachSubTask> = ({
                     {(task.subTasks?.length ?? 0) > 0 &&
                         task.subTasks?.map((sub) => (
                             <>
-                                <div className='eachSub' key={`sub+${sub.id}`}>
+                                <div
+                                    className='eachSub'
+                                    key={`sub+${task.title}+${sub.id}`}>
                                     <div
                                         onClick={() => {
                                             openSubTask(sub);

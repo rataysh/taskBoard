@@ -4,7 +4,6 @@ import React, {useEffect, useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {ITask} from "../../../interface/ITask";
 import "../../../../styles/eachTaskModal.scss";
-import {EachComment} from "../../EachComment";
 import {SubTask} from "../../SubTask";
 import {SideBar} from "../../SideBar";
 import {useDispatch} from "react-redux";
@@ -12,6 +11,7 @@ import {useTypedSelector} from "../../../../hooks/useTypedSelector";
 import {useLocation} from "react-router-dom";
 import {EachTaskComponetHeader} from "./EachTaskComponetHeader";
 import {EactTaskComponentDescription} from "./EactTaskComponentDescription";
+import {EactTaskComponentComment} from "./EactTaskComponentComment";
 
 interface IEachTaskModal {
     task?: ITask;
@@ -93,19 +93,10 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                                 setSubTaskActive={setSubTaskActive}
                             />
                         )}
-                        <div className='comments'>
-                            <p>Comments</p>
-                            <textarea placeholder='Write you comment...'></textarea>
-
-                            {(task?.comments?.length ?? 0) > 0
-                                ? task?.comments?.map((comment) => (
-                                      <EachComment
-                                          key={`comment+${comment.id}`}
-                                          comment={comment}
-                                      />
-                                  ))
-                                : ""}
-                        </div>
+                        <EactTaskComponentComment
+                            task={task!}
+                            subTaskFlag={subTaskFlag}
+                        />
                     </main>
                 </div>
             </div>

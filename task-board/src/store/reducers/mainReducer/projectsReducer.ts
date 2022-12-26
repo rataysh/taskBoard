@@ -3,10 +3,14 @@
 import {dataProject} from "../../../components/offlineData";
 import {IProject} from "../../../components/interface/IProject";
 import {
+    ActionAddCommentSubTask,
+    ActionAddCommentTask,
     ActionChangeDescriptionSubTask,
     ActionChangeDescriptionTask,
     ActionChangeTitleSubTask,
     ActionChangeTitleTask,
+    ActionDeleteCommentSubTask,
+    ActionDeleteCommentTask,
     ActionProjectsAdd,
     ActionProjectsDel,
     ActionString,
@@ -26,7 +30,11 @@ type ActionProjects =
     | ActionChangeDescriptionTask
     | ActionChangeDescriptionSubTask
     | ActionChangeTitleTask
-    | ActionChangeTitleSubTask;
+    | ActionChangeTitleSubTask
+    | ActionAddCommentTask
+    | ActionAddCommentSubTask
+    | ActionDeleteCommentTask
+    | ActionDeleteCommentSubTask;
 
 const initialState: IProject[] = dataProject;
 
@@ -214,6 +222,121 @@ export const projectsReducer = (
                                                               title: action
                                                                   .payload
                                                                   .title,
+                                                          };
+                                                }
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
+
+        //Comment TASK
+        case ActionString.ADD_COMMENT_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            comments: [
+                                                ...(task.comments ?? []),
+                                                action.payload.comment,
+                                            ],
+                                        };
+                              }),
+                          };
+                }),
+            ];
+        case ActionString.DELETE_COMMENT_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            comments: task.comments?.filter(
+                                                (com) =>
+                                                    com.id !==
+                                                    action.payload.commentId
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
+
+        //Comment SUB_TASK
+        case ActionString.ADD_COMMENT_SUB_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            subTasks: task.subTasks?.map(
+                                                (sub) => {
+                                                    return sub.id !==
+                                                        action.payload.subTaskId
+                                                        ? sub
+                                                        : {
+                                                              ...sub,
+                                                              comments: [
+                                                                  ...(sub.comments ??
+                                                                      []),
+                                                                  action.payload
+                                                                      .comment,
+                                                              ],
+                                                          };
+                                                }
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
+        case ActionString.DELETE_COMMENT_SUB_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            subTasks: task.subTasks?.map(
+                                                (sub) => {
+                                                    return sub.id !==
+                                                        action.payload.subTaskId
+                                                        ? sub
+                                                        : {
+                                                              ...sub,
+                                                              comments:
+                                                                  sub.comments?.filter(
+                                                                      (com) =>
+                                                                          com.id !==
+                                                                          action
+                                                                              .payload
+                                                                              .commentId
+                                                                  ),
                                                           };
                                                 }
                                             ),

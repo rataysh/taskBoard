@@ -1,7 +1,7 @@
 /** @format */
 
 import {IProject} from "../../../components/interface/IProject";
-import {ITask} from "../../../components/interface/ITask";
+import {IComment, ITask} from "../../../components/interface/ITask";
 
 export enum ActionString {
     ADD_PROJECT = "ADD_PROJECT",
@@ -14,6 +14,10 @@ export enum ActionString {
     CHANGE_DESCRIPTION_SUB_TASK = "CHANGE_DESCRIPTION_SUB_TASK",
     CHANGE_TITLE_TASK = "CHANGE_TITLE_TASK",
     CHANGE_TITLE_SUB_TASK = "CHANGE_TITLE_SUB_TASK",
+    ADD_COMMENT_TASK = "ADD_COMMENT_TASK",
+    DELETE_COMMENT_TASK = "DELETE_COMMENT_TASK",
+    ADD_COMMENT_SUB_TASK = "ADD_COMMENT_SUB_TASK",
+    DELETE_COMMENT_SUB_TASK = "DELETE_COMMENT_SUB_TASK",
 }
 
 // Add and delete PROJECT
@@ -95,5 +99,43 @@ export interface ActionChangeTitleSubTask {
         taskId: number;
         subTask: ITask;
         title: string;
+    };
+}
+
+// For add/delete comemnts TASK
+export interface ActionAddCommentTask {
+    type: ActionString.ADD_COMMENT_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        comment: IComment;
+    };
+}
+export interface ActionDeleteCommentTask {
+    type: ActionString.DELETE_COMMENT_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        commentId: number;
+    };
+}
+
+// For add/delete comemnts SUB-TASK
+export interface ActionAddCommentSubTask {
+    type: ActionString.ADD_COMMENT_SUB_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        subTaskId: number;
+        comment: IComment;
+    };
+}
+export interface ActionDeleteCommentSubTask {
+    type: ActionString.DELETE_COMMENT_SUB_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        subTaskId: number;
+        commentId: number;
     };
 }
