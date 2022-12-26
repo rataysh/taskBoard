@@ -12,6 +12,8 @@ export enum ActionString {
     DELETE_SUB_TASK = "DELETE_SUB_TASK",
     CHANGE_DESCRIPTION_TASK = "CHANGE_DESCRIPTION_TASK",
     CHANGE_DESCRIPTION_SUB_TASK = "CHANGE_DESCRIPTION_SUB_TASK",
+    CHANGE_TITLE_TASK = "CHANGE_TITLE_TASK",
+    CHANGE_TITLE_SUB_TASK = "CHANGE_TITLE_SUB_TASK",
 }
 
 // Add and delete PROJECT
@@ -71,8 +73,27 @@ export interface ActionChangeDescriptionSubTask {
     type: ActionString.CHANGE_DESCRIPTION_SUB_TASK;
     payload: {
         projectId: number;
-        task: ITask;
+        taskId: number;
         subTask: ITask;
         description: string;
+    };
+}
+
+// For change title
+export interface ActionChangeTitleTask {
+    type: ActionString.CHANGE_TITLE_TASK;
+    payload: {
+        projectId: number;
+        task: ITask;
+        title: string;
+    };
+}
+export interface ActionChangeTitleSubTask {
+    type: ActionString.CHANGE_TITLE_SUB_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        subTask: ITask;
+        title: string;
     };
 }

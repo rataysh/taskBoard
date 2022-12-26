@@ -1,6 +1,6 @@
 /** @format */
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {MdPlaylistAdd} from "react-icons/md";
 import {useDispatch} from "react-redux";
@@ -8,6 +8,7 @@ import {ITask} from "../interface/ITask";
 import {SubTaskModal} from "./popUpWindows/SubTaskModal";
 import "../../styles/eachTaskModal.scss";
 import {useLocation} from "react-router-dom";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 interface IEachSubTask {
     task: ITask;
@@ -20,10 +21,15 @@ export const SubTask: React.FC<IEachSubTask> = ({
     subTaskActive,
     setSubTaskActive,
 }) => {
-    const [idSub, setIdSub] = useState<number | null>(null);
-    // const [createNewSubTask, setCreateNewSubTask] = useState<boolean>(false);
     const dispatch = useDispatch();
     const certainProject = useLocation();
+
+    //For SUB-TASK
+    const idSubTask = useTypedSelector((state) => state.idSubTask);
+    const [idSub, setIdSub] = useState<number | null>(null);
+    useEffect(() => {
+        setIdSub(idSubTask);
+    }, [idSubTask]);
 
     const delSubTask = (subTask: ITask) => {
         dispatch({
@@ -36,14 +42,18 @@ export const SubTask: React.FC<IEachSubTask> = ({
         });
     };
 
-    const openSubTaskModal = () => {
+    const createNewSubTaskModal = () => {
         dispatch({
             type: "POP_UP_OPEN_SUB_TASK",
         });
+    };
+    const openSubTask = (sub: ITask) => {
         dispatch({
             type: "SUB_TASK_GET_ID",
-            payload: task.id,
+            payload: sub.id,
         });
+        setIdSub(idSubTask);
+        setSubTaskActive(!subTaskActive);
     };
 
     return (
@@ -54,7 +64,7 @@ export const SubTask: React.FC<IEachSubTask> = ({
                     <div className='closeIcon'>
                         <MdPlaylistAdd
                             className='subHeaderText'
-                            onClick={openSubTaskModal}
+                            onClick={createNewSubTaskModal}
                         />
                     </div>
                 </div>
@@ -62,12 +72,10 @@ export const SubTask: React.FC<IEachSubTask> = ({
                     {(task.subTasks?.length ?? 0) > 0 &&
                         task.subTasks?.map((sub) => (
                             <>
-                                <div className='eachSub'>
+                                <div className='eachSub' key={`sub+${sub.id}`}>
                                     <div
-                                        key={sub.id}
                                         onClick={() => {
-                                            setIdSub(sub.id);
-                                            setSubTaskActive(!subTaskActive);
+                                            openSubTask(sub);
                                         }}>
                                         {sub.title}
                                     </div>
@@ -92,13 +100,6 @@ export const SubTask: React.FC<IEachSubTask> = ({
                                 setSubTaskActive={setSubTaskActive}
                             />
                         )}
-
-                        {/* <CreateNewTaskModal
-                            active={createNewSubTask}
-                            setActive={setCreateNewSubTask}
-                            tasks={certainProject.state.tasks}
-                            subFlag={true}
-                        /> */}
                     </>
                 </div>
             </div>

@@ -5,6 +5,8 @@ import {IProject} from "../../../components/interface/IProject";
 import {
     ActionChangeDescriptionSubTask,
     ActionChangeDescriptionTask,
+    ActionChangeTitleSubTask,
+    ActionChangeTitleTask,
     ActionProjectsAdd,
     ActionProjectsDel,
     ActionString,
@@ -22,7 +24,9 @@ type ActionProjects =
     | ActionSubTaskAdd
     | ActionSubTaskDelete
     | ActionChangeDescriptionTask
-    | ActionChangeDescriptionSubTask;
+    | ActionChangeDescriptionSubTask
+    | ActionChangeTitleTask
+    | ActionChangeTitleSubTask;
 
 const initialState: IProject[] = dataProject;
 
@@ -137,7 +141,88 @@ export const projectsReducer = (
                 }),
             ];
         case ActionString.CHANGE_DESCRIPTION_SUB_TASK:
-            return state;
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            subTasks: task.subTasks?.map(
+                                                (sub) => {
+                                                    return sub.id !==
+                                                        action.payload.subTask
+                                                            .id
+                                                        ? sub
+                                                        : {
+                                                              ...sub,
+                                                              description:
+                                                                  action.payload
+                                                                      .description,
+                                                          };
+                                                }
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
+
+        // CHANGE TITLE
+        case ActionString.CHANGE_TITLE_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.task.id
+                                      ? task
+                                      : {
+                                            ...task,
+                                            title: action.payload.title,
+                                        };
+                              }),
+                          };
+                }),
+            ];
+        case ActionString.CHANGE_TITLE_SUB_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            subTasks: task.subTasks?.map(
+                                                (sub) => {
+                                                    return sub.id !==
+                                                        action.payload.subTask
+                                                            .id
+                                                        ? sub
+                                                        : {
+                                                              ...sub,
+                                                              title: action
+                                                                  .payload
+                                                                  .title,
+                                                          };
+                                                }
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
+
         default:
             return state;
     }

@@ -10,7 +10,7 @@ import "../styles/createNewModal.scss";
 import {useLocation} from "react-router-dom";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {ITask} from "../components/interface/ITask";
-import { DelConfirmModal } from "../components/DelConfirmModal";
+import {DelConfirmModal} from "../components/DelConfirmModal";
 
 export const PageTasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
@@ -24,7 +24,7 @@ export const PageTasks: React.FC = () => {
         setCreateNewSubTask(chekSubTaskModal);
     }, [chekSubTaskModal]);
     // id task
-    const chekTaskIdForSub = useTypedSelector((state) => state.idForSubTask);
+    const chekTaskIdForSub = useTypedSelector((state) => state.idTask);
     const [taskIdForSub, setTaskIdForSub] = useState<number>(0);
     useEffect(() => {
         setTaskIdForSub(chekTaskIdForSub);
@@ -32,7 +32,9 @@ export const PageTasks: React.FC = () => {
 
     //Pop-up for confirm del Task
     const [modalDeleteTask, setModalDeleteTask] = useState<boolean>(false);
-    const checkActiveModalDel = useTypedSelector((state) => state.modalViewDelTask);
+    const checkActiveModalDel = useTypedSelector(
+        (state) => state.modalViewDelTask
+    );
     useEffect(() => {
         setModalDeleteTask(checkActiveModalDel);
     }, [checkActiveModalDel]);

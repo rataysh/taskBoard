@@ -2,7 +2,7 @@
 
 import React from "react";
 import {ITask} from "../../interface/ITask";
-import {EachTaskModal} from "./EachTaskModal";
+import {EachTaskModal} from "./eactTask/EachTaskModal";
 
 interface IEachSubTaskModal {
     task: ITask;

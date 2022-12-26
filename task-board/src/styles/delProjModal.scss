@@ -27,7 +27,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     margin-top: 5%;
     padding-bottom: 1rem;
     padding-top: 3rem;
@@ -57,12 +57,10 @@
     }
 
     p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        text-align: center;
         font-weight: 500;
         font-size: 20px;
-        padding: 0.5rem;
+        padding: 0.8rem;
     }
     div.buttonBlock {
         width: 100%;

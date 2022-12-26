@@ -16,17 +16,17 @@ interface ActionSubTaskResetId {
 
 type ActionEachTask = ActionSubTaskGetId | ActionSubTaskResetId;
 
-const initialState: number = 0;
+const initialState: number | null = null;
 
-export const idForSubTaskReducer = (
+export const idSubTaskReducer = (
     state = initialState,
     action: ActionEachTask
-): number => {
+): number | null => {
     switch (action.type) {
         case ActionString.SUB_TASK_GET_ID:
             return action.payload;
         case ActionString.SUB_TASK_RESET_ID:
-            return (state = 0);
+            return (state = null);
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import "../../styles/tasksBoard.scss";
 import {ITask} from "../interface/ITask";
 // import {EachTask} from "./EachTask";
-import {EachTaskModal} from "./popUpWindows/EachTaskModal";
+import {EachTaskModal} from "./popUpWindows/eactTask/EachTaskModal";
 import {EachBoard} from "./EachBoard";
 // import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
@@ -18,7 +18,7 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
     //     useState<boolean>(false);
     // const dispatch = useDispatch();
     const eachTaskActive = useTypedSelector((state) => state.modalView);
-    const modalTask = useTypedSelector((state) => state.eachTask);
+    const idTask = useTypedSelector((state) => state.idTask);
 
     const createEachBoard = (tasks: ITask[], status: number) => {
         let boardTitle = "";
@@ -58,10 +58,10 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
                 </div>
             </div>
             <>
-                {eachTaskActive && modalTask.length > 0 && (
+                {eachTaskActive && (
                     <EachTaskModal
                         active={eachTaskActive}
-                        task={modalTask[0]}
+                        task={tasks.filter((task) => task.id === idTask)[0]}
                         subTaskFlag={false}
                     />
                 )}

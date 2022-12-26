@@ -33,15 +33,17 @@ export const EachTask: React.FC<IEachTask> = ({task}) => {
         <>
             <div
                 onClick={() => {
-                    dispatch({
-                        type: "GET_EACH_TASK",
-                        payload: task,
-                    });
+                    // dispatch({
+                    //     type: "GET_EACH_TASK",
+                    //     payload: task,
+                    // });
                     dispatch({
                         type: "POP_UP_OPEN_EACH_TASK",
                     });
-                    // console.log(eachTaskActive);
-                    // console.log(testTask);
+                    dispatch({
+                        type: "TASK_GET_ID",
+                        payload: task.id,
+                    });
                 }}>
                 <MdOutlineDeleteForever
                     className='del'

@@ -20,8 +20,6 @@ export const taskBoardDataReducer = (
     action: ActionProjects
 ): ITask[] => {
     switch (action.type) {
-        // case ActionString.GET_TITLE:
-        //     return [...state, action.payload];
         case ActionString.GET_ALL_TASKS:
             return [...action.payload];
         default:
