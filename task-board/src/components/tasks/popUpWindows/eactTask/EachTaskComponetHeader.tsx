@@ -31,7 +31,6 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
         setCheckChangeTitleFlag(titleValue !== task?.title);
     }, [titleValue]);
 
-
     const saveChangeTitle = () => {
         subTaskFlag
             ? dispatch({
@@ -63,8 +62,8 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
             precedence === "low"
                 ? "#46f7b7"
                 : precedence === "medium"
-                ? "#a1c62f"
-                : "#e02c8c"
+                ? "#F5EB88"
+                : "#FFA775"
         );
     }, [precedence]);
     const handleChange = (event: SelectChangeEvent) => {
@@ -116,17 +115,24 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
             <div className='prior'>
                 <FormControl
                     variant='standard'
-                    sx={{minWidth: 90}}
+                    sx={{
+                        minWidth: 90,
+                    }}
                     size='small'>
                     <Select
                         autoWidth
                         value={precedence}
                         label={precedence + " priority"}
                         onChange={handleChange}
-                        sx={{backgroundColor: colorPrecedence}}>
+                        disableUnderline    
+                        sx={{
+                            backgroundColor: colorPrecedence,
+                            textAlign: "center",
+                            borderRadius: "5px",
+                        }}>
                         <MenuItem value={"low"}>low</MenuItem>
                         <MenuItem value={"medium"}>medium</MenuItem>
-                        <MenuItem value={"higth"}>higth</MenuItem>
+                        <MenuItem value={"high"}>high</MenuItem>
                     </Select>
                 </FormControl>
             </div>

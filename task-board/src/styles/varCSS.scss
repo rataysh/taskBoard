@@ -9,16 +9,15 @@ $backBoard: #dddfe7;
 $textBoard: #363333;
 
 // precedence color
-$low-color: #46f7b7;
-$medium-color: #a1c62f;
-$higth-color: #e02c8c;
+$low-color: #46F7B7;
+$medium-color: #F5EB88;
+$higth-color: #FFA775;
 
 %fontMain {
     font-family: "Poppins", sans-serif;
 }
 
 %fontDate {
-    font-family: "Inter";
     font-style: normal;
     font-weight: 600;
     font-size: 10px;
