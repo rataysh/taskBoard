@@ -44,6 +44,7 @@ const testTask: ITask[] = [
                 dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
                 precedence: "medium",
                 status: 1,
+                comments: [],
             },
             {
                 id: 1,
@@ -52,6 +53,7 @@ const testTask: ITask[] = [
                 dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
                 precedence: "higth",
                 status: 2,
+                comments: [],
             },
         ],
     },
@@ -62,6 +64,7 @@ const testTask: ITask[] = [
         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
         precedence: "medium",
         status: 1,
+        comments: [],
         // timeDuringWork?: number,
         // dateEnd?: number,
         // file?: File,
@@ -73,6 +76,7 @@ const testTask: ITask[] = [
         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
         precedence: "higth",
         status: 2,
+        comments: [],
         // timeDuringWork?: number,
         // dateEnd?: number,
         // file?: File,
@@ -80,37 +84,38 @@ const testTask: ITask[] = [
 ];
 
  const secondTestTask: ITask[] = [
-    {
-        id: 0,
-        title: "Meeting with QA",
-        description: "Conf call with QA engineer on Monday",
-        dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
-        precedence: "low",
-        status: 0,
-        comments: [
-            {
-                id: 0,
-                text: "First test comment",
-                dateCreate: moment(Date.now()).format(
-                    "MMMM Do YYYY, h:mm:ss a"
-                ),
-            },
-        ],
-        subTasks: [
-            {
-                id: 1,
-                title: "Sub-task for Dev",
-                description: "Create logic",
-                dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
-                precedence: "low",
-                status: 1,
-                // timeDuringWork?: number,
-                // dateEnd?: number,
-                // file?: File,
-            },
-        ],
-    },
-];
+     {
+         id: 0,
+         title: "Meeting with QA",
+         description: "Conf call with QA engineer on Monday",
+         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+         precedence: "low",
+         status: 0,
+         comments: [
+             {
+                 id: 0,
+                 text: "First test comment",
+                 dateCreate: moment(Date.now()).format(
+                     "MMMM Do YYYY, h:mm:ss a"
+                 ),
+             },
+         ],
+         subTasks: [
+             {
+                 id: 1,
+                 title: "Sub-task for Dev",
+                 description: "Create logic",
+                 dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+                 precedence: "low",
+                 status: 1,
+                 comments: [],
+                 // timeDuringWork?: number,
+                 // dateEnd?: number,
+                 // file?: File,
+             },
+         ],
+     },
+ ];
 
 export const dataProject: IProject[] = [
     {

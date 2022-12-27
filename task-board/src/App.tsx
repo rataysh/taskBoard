@@ -4,7 +4,7 @@ import React from "react";
 import {Routes, Route} from "react-router-dom";
 import {PageTasks} from "./pages/PageTasks";
 import {PageProjects} from "./pages/PageProjects";
-import {EachTaskModal} from "./components/tasks/popUpWindows/eactTask/EachTaskModal";
+
 
 const App = () => {
     return (

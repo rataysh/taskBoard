@@ -18,6 +18,8 @@ export enum ActionString {
     DELETE_COMMENT_TASK = "DELETE_COMMENT_TASK",
     ADD_COMMENT_SUB_TASK = "ADD_COMMENT_SUB_TASK",
     DELETE_COMMENT_SUB_TASK = "DELETE_COMMENT_SUB_TASK",
+    PRECEDENCE_TASK = "PRECEDENCE_TASK",
+    PRECEDENCE_SUB_TASK = "PRECEDENCE_SUB_TASK",
 }
 
 // Add and delete PROJECT
@@ -137,5 +139,24 @@ export interface ActionDeleteCommentSubTask {
         taskId: number;
         subTaskId: number;
         commentId: number;
+    };
+}
+
+// For change precedence
+export interface ActionChangePrecedenceTask {
+    type: ActionString.PRECEDENCE_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        precedence: string;
+    };
+}
+export interface ActionChangePrecedenceSubTask {
+    type: ActionString.PRECEDENCE_SUB_TASK;
+    payload: {
+        projectId: number;
+        taskId: number;
+        subTask: ITask;
+        precedence: string;
     };
 }

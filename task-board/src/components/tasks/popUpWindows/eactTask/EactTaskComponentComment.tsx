@@ -11,7 +11,7 @@ import {ITask} from "../../../interface/ITask";
 import {EachComment} from "./EachComment";
 
 interface IEactTaskComponentComment {
-    task: ITask;
+    task?: ITask;
     subTaskFlag: boolean;
 }
 
@@ -40,7 +40,7 @@ export const EactTaskComponentComment: React.FC<IEactTaskComponentComment> = ({
                       subTaskId: idSubTask,
                       comment: {
                           id:
-                              task.comments === undefined
+                              task?.comments === undefined
                                   ? 0
                                   : idAdd(task.comments),
                           text: commentValue,
@@ -57,9 +57,9 @@ export const EactTaskComponentComment: React.FC<IEactTaskComponentComment> = ({
                       taskId: idTask,
                       comment: {
                           id:
-                              task.comments === undefined
+                              task?.comments === undefined
                                   ? 0
-                                  : idAdd(task.comments),
+                                  : idAdd(task?.comments),
                           text: commentValue,
                           dateCreate: moment(Date.now()).format(
                               "MMMM Do YYYY, h:mm:ss a"
@@ -99,18 +99,18 @@ export const EactTaskComponentComment: React.FC<IEactTaskComponentComment> = ({
                     </>
                 )}
             </div>
-            {(task.comments?.length ?? 0) > 0
-                ? task.comments
-                      ?.slice(0)
-                      .reverse()
-                      .map((comment) => (
-                          <EachComment
-                              key={`comment+${task.title}+${comment.id}`}
-                              comment={comment}
-                              subTaskFlag={subTaskFlag}
-                          />
-                      ))
-                : ""}
+            {task?.comments !== undefined &&
+                task?.comments?.length !== 0 &&
+                task?.comments
+                    .slice(0)
+                    .reverse()
+                    .map((comment) => (
+                        <EachComment
+                            key={`comment+${task.title}+${comment.id}`}
+                            comment={comment}
+                            subTaskFlag={subTaskFlag}
+                        />
+                    ))}
         </div>
     );
 };

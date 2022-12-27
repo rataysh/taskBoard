@@ -7,6 +7,8 @@ import {
     ActionAddCommentTask,
     ActionChangeDescriptionSubTask,
     ActionChangeDescriptionTask,
+    ActionChangePrecedenceSubTask,
+    ActionChangePrecedenceTask,
     ActionChangeTitleSubTask,
     ActionChangeTitleTask,
     ActionDeleteCommentSubTask,
@@ -34,7 +36,9 @@ type ActionProjects =
     | ActionAddCommentTask
     | ActionAddCommentSubTask
     | ActionDeleteCommentTask
-    | ActionDeleteCommentSubTask;
+    | ActionDeleteCommentSubTask
+    | ActionChangePrecedenceTask
+    | ActionChangePrecedenceSubTask;
 
 const initialState: IProject[] = dataProject;
 
@@ -346,6 +350,56 @@ export const projectsReducer = (
                 }),
             ];
 
+        // CHANGE PRECEDENCE
+        case ActionString.PRECEDENCE_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            precedence:
+                                                action.payload.precedence,
+                                        };
+                              }),
+                          };
+                }),
+            ];
+        case ActionString.PRECEDENCE_SUB_TASK:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            subTasks: task.subTasks?.map(
+                                                (sub) => {
+                                                    return sub.id !==
+                                                        action.payload.subTask.id
+                                                        ? sub
+                                                        : {
+                                                              ...sub,
+                                                              precedence:
+                                                                  action.payload
+                                                                      .precedence,
+                                                          };
+                                                }
+                                            ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
         default:
             return state;
     }

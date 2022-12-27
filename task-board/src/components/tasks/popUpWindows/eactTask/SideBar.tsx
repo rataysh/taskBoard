@@ -1,8 +1,7 @@
 /** @format */
 
 import React from "react";
-import {MdAttachFile, MdEditNote} from "react-icons/md";
-import {ITask} from "../interface/ITask";
+import {ITask} from "../../../interface/ITask";
 
 interface ISideBar {
     task?: ITask;
@@ -23,7 +22,8 @@ export const SideBar: React.FC<ISideBar> = ({task}) => {
                         : task?.status === 1
                         ? "Development"
                         : "Done"}
-                    <MdEditNote className='changeIcon' onClick={() => {}} />
+
+                    {/* <MdEditNote className='changeIcon' onClick={() => {}} /> */}
                 </div>
             </div>
             <div>

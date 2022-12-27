@@ -11,7 +11,7 @@ export interface ITask {
     dateEnd?: string;
     file?: File;
     subTasks?: ITask[];
-    comments?: IComment[];
+    comments: IComment[];
 }
 
 export interface IComment {

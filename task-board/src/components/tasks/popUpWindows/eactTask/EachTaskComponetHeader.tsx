@@ -1,5 +1,8 @@
 /** @format */
 
+import {FormControl} from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Select, {SelectChangeEvent} from "@mui/material/Select";
 import React, {useEffect, useState} from "react";
 import {MdEditNote} from "react-icons/md";
 import {useDispatch} from "react-redux";
@@ -28,6 +31,7 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
         setCheckChangeTitleFlag(titleValue !== task?.title);
     }, [titleValue]);
 
+
     const saveChangeTitle = () => {
         subTaskFlag
             ? dispatch({
@@ -50,6 +54,41 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
 
         setCheckChangeTitleFlag(false);
     };
+
+    // for precedence change
+    const [precedence, setPrecedence] = useState(task?.precedence);
+    const [colorPrecedence, setColorPrecedence] = useState("");
+    useEffect(() => {
+        setColorPrecedence(
+            precedence === "low"
+                ? "#46f7b7"
+                : precedence === "medium"
+                ? "#a1c62f"
+                : "#e02c8c"
+        );
+    }, [precedence]);
+    const handleChange = (event: SelectChangeEvent) => {
+        setPrecedence(event.target.value as string);
+        subTaskFlag
+            ? dispatch({
+                  type: "PRECEDENCE_SUB_TASK",
+                  payload: {
+                      projectId: certainProject.state.id,
+                      taskId: idTask,
+                      subTask: task,
+                      precedence: event.target.value as string,
+                  },
+              })
+            : dispatch({
+                  type: "PRECEDENCE_TASK",
+                  payload: {
+                      projectId: certainProject.state.id,
+                      taskId: idTask,
+                      precedence: event.target.value as string,
+                  },
+              });
+    };
+
     return (
         <header>
             <div className='head'>
@@ -74,10 +113,22 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
                     />
                 </div>
             </div>
-
             <div className='prior'>
-                <p>{task?.precedence ?? "" + " priority"}</p>
-                <MdEditNote className='changeIcon' onClick={() => {}} />
+                <FormControl
+                    variant='standard'
+                    sx={{minWidth: 90}}
+                    size='small'>
+                    <Select
+                        autoWidth
+                        value={precedence}
+                        label={precedence + " priority"}
+                        onChange={handleChange}
+                        sx={{backgroundColor: colorPrecedence}}>
+                        <MenuItem value={"low"}>low</MenuItem>
+                        <MenuItem value={"medium"}>medium</MenuItem>
+                        <MenuItem value={"higth"}>higth</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
         </header>
     );

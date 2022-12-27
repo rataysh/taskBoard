@@ -4,11 +4,11 @@ import React, {useEffect, useState} from "react";
 import {GrClose} from "react-icons/gr";
 import {MdPlaylistAdd} from "react-icons/md";
 import {useDispatch} from "react-redux";
-import {ITask} from "../interface/ITask";
-import {SubTaskModal} from "./popUpWindows/SubTaskModal";
-import "../../styles/eachTaskModal.scss";
+import {ITask} from "../../../interface/ITask";
+import {SubTaskModal} from "../SubTaskModal";
+import "../../../../styles/eachTaskModal.scss";
 import {useLocation} from "react-router-dom";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useTypedSelector} from "../../../../hooks/useTypedSelector";
 
 interface IEachSubTask {
     task: ITask;
