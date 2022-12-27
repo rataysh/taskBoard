@@ -72,9 +72,9 @@
             display: flex;
             flex-direction: row;
             align-items: flex-start;
-            padding: 2px;
+            padding: 3px;
             color: green;
-            background: #46f7b7;
+            /* background: #46f7b7; */
             border-radius: 3px;
 
             font-weight: 600;
@@ -95,6 +95,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+            gap: 10px;
 
             p {
                 @extend %fontDate;

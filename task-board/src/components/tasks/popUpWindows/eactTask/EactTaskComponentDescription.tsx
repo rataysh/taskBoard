@@ -80,7 +80,9 @@ export const EactTaskComponentDescription: React.FC<
                     setDescriptonValue(e.target.value);
                 }}></textarea>
             {chekChangesDescription && (
-                <button onClick={saveChangeDescription}>save</button>
+                <button className='saveButton' onClick={saveChangeDescription}>
+                    save
+                </button>
             )}
         </div>
     );

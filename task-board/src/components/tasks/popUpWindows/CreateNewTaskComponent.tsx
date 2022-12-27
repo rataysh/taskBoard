@@ -1,5 +1,10 @@
 /** @format */
 
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import React, {ChangeEvent} from "react";
 
 interface ICreateNewTaskComponent {
@@ -8,7 +13,9 @@ interface ICreateNewTaskComponent {
     description: string;
     changeDescription: (event: ChangeEvent<HTMLTextAreaElement>) => void;
     setPrecedence: (precedence: string) => void;
+    precedence: string;
     setStatus: (status: number) => void;
+    status: number;
 }
 
 export const CreateNewTaskComponent: React.FC<ICreateNewTaskComponent> = ({
@@ -17,8 +24,18 @@ export const CreateNewTaskComponent: React.FC<ICreateNewTaskComponent> = ({
     changeName,
     changeDescription,
     setPrecedence,
+    precedence,
     setStatus,
+    status,
 }) => {
+    const precedenceChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setPrecedence((event.target as HTMLInputElement).value);
+    };
+
+    const statusChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setStatus(Number((event.target as HTMLInputElement).value));
+    };
+
     return (
         <>
             <div>
@@ -39,117 +56,63 @@ export const CreateNewTaskComponent: React.FC<ICreateNewTaskComponent> = ({
             </div>
             <div>
                 <p>Precedence</p>
-                <div className='radio'>
-                    <input
-                        id='radioPrecedence-1'
-                        name='radioPrecedence'
-                        // checked={true}
-                        type='radio'
-                        value={"low"}
-                        onChange={(e) => {
-                            setPrecedence(e.target.value);
-                        }}
-                    />
-                    <label htmlFor='radio-1' className='radio-label'>
-                        Low
-                    </label>
-                </div>
-
-                <div className='radio'>
-                    <input
-                        id='radioPrecedence-2'
-                        name='radioPrecedence'
-                        type='radio'
-                        value={"medium"}
-                        onChange={(e) => {
-                            setPrecedence(e.target.value);
-                        }}
-                    />
-                    <label htmlFor='radio-2' className='radio-label'>
-                        Medium
-                    </label>
-                </div>
-
-                <div className='radio'>
-                    <input
-                        id='radioPrecedence-3'
-                        name='radioPrecedence'
-                        type='radio'
-                        value={"higth"}
-                        onChange={(e) => {
-                            setPrecedence(e.target.value);
-                        }}
-                    />
-                    <label htmlFor='radio-3' className='radio-label'>
-                        High
-                    </label>
-                </div>
+                <FormControl>
+                    <FormLabel id='precedence-choose'></FormLabel>
+                    <RadioGroup
+                        aria-labelledby='precedence-choose'
+                        defaultValue='low'
+                        name='radio-buttons-group'
+                        // sx={{}}
+                        value={precedence}
+                        onChange={precedenceChange}>
+                        <FormControlLabel
+                            value='low'
+                            control={<Radio />}
+                            label='Low'
+                        />
+                        <FormControlLabel
+                            value='medium'
+                            control={<Radio />}
+                            label='Medium'
+                        />
+                        <FormControlLabel
+                            value='higt'
+                            control={<Radio />}
+                            label='Higt'
+                        />
+                    </RadioGroup>
+                </FormControl>
             </div>
+
             <div>
                 <p>Status</p>
-                <div className='radio'>
-                    <input
-                        id='radioStatus-1'
-                        name='radioStatus'
-                        // checked={true}
-                        type='radio'
-                        value={0}
-                        onChange={(e) => {
-                            setStatus(Number(e.target.value));
-                        }}
-                    />
-                    <label htmlFor='radio-1' className='radio-label'>
-                        Queue
-                    </label>
-                </div>
-
-                <div className='radio'>
-                    <input
-                        id='radioStatus-2'
-                        name='radioStatus'
-                        type='radio'
-                        value={1}
-                        onChange={(e) => {
-                            setStatus(Number(e.target.value));
-                        }}
-                    />
-                    <label htmlFor='radio-2' className='radio-label'>
-                        Development
-                    </label>
-                </div>
-
-                <div className='radio'>
-                    <input
-                        id='radioStatus-3'
-                        name='radioStatus'
-                        type='radio'
-                        value={2}
-                        onChange={(e) => {
-                            setStatus(Number(e.target.value));
-                        }}
-                    />
-                    <label htmlFor='radio-3' className='radio-label'>
-                        Done
-                    </label>
-                </div>
+                <FormControl>
+                    <FormLabel id='status-choose'></FormLabel>
+                    <RadioGroup
+                        aria-labelledby='status-choose'
+                        defaultValue='low'
+                        name='radio-buttons-group-status'
+                        // sx={{}}
+                        value={status}
+                        onChange={statusChange}>
+                        <FormControlLabel
+                            value={0}
+                            control={<Radio />}
+                            label='Queue'
+                        />
+                        <FormControlLabel
+                            value={1}
+                            control={<Radio />}
+                            label='Development'
+                        />
+                        <FormControlLabel
+                            value={2}
+                            control={<Radio />}
+                            label='Done'
+                        />
+                    </RadioGroup>
+                </FormControl>
             </div>
-            {/* <div className='file'>
-                <p>File</p>
-                <div className='containerFile'>
-                    <form>
-                        <div
-                            className='file-upload-wrapper'
-                            data-text='Select your file!'>
-                            <input
-                                name='file-upload-field'
-                                type='file'
-                                className='file-upload-field'
-                                value=''
-                            />
-                        </div>
-                    </form>
-                </div>
-            </div> */}
         </>
     );
 };

@@ -91,6 +91,8 @@ export const EactTaskComponentComment: React.FC<IEactTaskComponentComment> = ({
                         </span>
 
                         <button
+                            style={{zIndex: "30"}}
+                            className='saveButton'
                             onClick={() => {
                                 saveComment();
                             }}>

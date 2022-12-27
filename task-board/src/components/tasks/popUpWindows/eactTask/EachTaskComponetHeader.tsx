@@ -97,7 +97,11 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
                             onChange={(e) => setTitleValue(e.target.value)}>
                             {task?.title ?? ""}
                         </textarea>
-                        <button onClick={saveChangeTitle}>save</button>
+                        <button
+                            className='saveButton'
+                            onClick={saveChangeTitle}>
+                            save
+                        </button>
                     </div>
                 ) : (
                     <p>{task?.title ?? ""}</p>
@@ -124,7 +128,7 @@ export const EachTaskComponetHeader: React.FC<IEachTaskComponetHeader> = ({
                         value={precedence}
                         label={precedence + " priority"}
                         onChange={handleChange}
-                        disableUnderline    
+                        disableUnderline
                         sx={{
                             backgroundColor: colorPrecedence,
                             textAlign: "center",

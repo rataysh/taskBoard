@@ -97,7 +97,7 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
             <div className={`modal_wrapper ${active ? "open" : "close"}`}>
                 <div className='modalContainer'>
                     <div className='modalBody modalBodyTask'>
-                        <span
+                        <span className="close"
                             onClick={() => {
                                 dispatch({
                                     type: "POP_UP_CLOSE_SUB_TASK",
@@ -112,7 +112,9 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
                             changeName={inputName}
                             changeDescription={inputDiscription}
                             setPrecedence={setPrecedence}
+                            precedence={precedence}
                             setStatus={setStatus}
+                            status={status}
                         />
                         <button
                             disabled={!valid}
