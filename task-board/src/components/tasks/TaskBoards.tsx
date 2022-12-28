@@ -1,6 +1,6 @@
 /** @format */
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../../styles/tasksBoard.scss";
 import {ITask} from "../interface/ITask";
 // import {EachTask} from "./EachTask";
@@ -8,55 +8,61 @@ import {EachTaskModal} from "./popUpWindows/eactTask/EachTaskModal";
 import {EachBoard} from "./EachBoard";
 // import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useDispatch} from "react-redux";
+import {useLocation} from "react-router-dom";
 
 interface ITaskBoards {
     tasks: ITask[];
 }
 
 export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
-    // const [eachTaskModalActive, setEachTaskModalActive] =
-    //     useState<boolean>(false);
     // const dispatch = useDispatch();
     const eachTaskActive = useTypedSelector((state) => state.modalView);
     const idTask = useTypedSelector((state) => state.idTask);
+    // const certainProject = useLocation();
 
-    const createEachBoard = (tasks: ITask[], status: number) => {
-        let boardTitle = "";
-        status === 0
-            ? (boardTitle = "Queue")
-            : status === 1
-            ? (boardTitle = "Development")
-            : (boardTitle = "Done");
+    // const boardTasks = useTypedSelector((state) => state);
 
-        return tasks.length > 0 ? (
-            <EachBoard title={boardTitle} tasks={tasks} />
-        ) : (
-            <EachBoard title={boardTitle} tasks={[]} />
-        );
-    };
+    // Filter state for status
+    const [queue, setQueue] = useState<ITask[]>([]);
+    const [develop, setDevelop] = useState<ITask[]>([]);
+    const [done, setDone] = useState<ITask[]>([]);
+
+    // useEffect(() => {
+    //     setQueue(tasks.filter((task) => task.status === 0));
+    //     setDevelop(tasks.filter((task) => task.status === 1));
+    //     setDone(tasks.filter((task) => task.status === 2));
+    // }, [tasks]);
+
+    // useEffect(() => {
+    //     for (let i = 0; i < queue.length; i++) {
+    //         dispatch({
+    //             type: "INDEX_CHANGE",
+    //             payload: {
+    //                 projId: certainProject.state.id,
+    //                 taskId: queue[i].id,
+    //                 index: i,
+    //             },
+    //         });
+    //     }
+    // }, [queue]);
 
     return (
         <>
             <div className='allBoard'>
-                <div className='eachBoard'>
-                    {createEachBoard(
-                        tasks.filter((task) => task.status === 0),
-                        0
-                    )}
-                </div>
-                <div className='eachBoard'>
-                    {createEachBoard(
-                        tasks.filter((task) => task.status === 1),
-                        1
-                    )}
-                </div>
-                <div className='eachBoard'>
-                    {createEachBoard(
-                        tasks.filter((task) => task.status === 2),
-                        2
-                    )}
-                </div>
+                {/* <button
+                    style={{zIndex: 50}}
+                    onClick={() => {
+                        console.log(queue);
+                        // console.log(tasks.filter((task) => task.status === 0));
+                    }}>
+                    TTTTTTTTTTT
+                </button> */}
+                <EachBoard title={"Queue"} tasks={queue} />
+                <EachBoard title={"Development"} tasks={develop} />
+                <EachBoard title={"Done"} tasks={done} />
             </div>
+
             <>
                 {eachTaskActive && (
                     <EachTaskModal

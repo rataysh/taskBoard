@@ -20,6 +20,8 @@ export enum ActionString {
     DELETE_COMMENT_SUB_TASK = "DELETE_COMMENT_SUB_TASK",
     PRECEDENCE_TASK = "PRECEDENCE_TASK",
     PRECEDENCE_SUB_TASK = "PRECEDENCE_SUB_TASK",
+    STATUS_CHANGE = "STATUS_CHANGE",
+    INDEX_CHANGE = "INDEX_CHANGE",
 }
 
 // Add and delete PROJECT
@@ -158,5 +160,25 @@ export interface ActionChangePrecedenceSubTask {
         taskId: number;
         subTask: ITask;
         precedence: string;
+    };
+}
+
+// For change status
+export interface ActionChangeStatusTask {
+    type: ActionString.STATUS_CHANGE;
+    payload: {
+        projectId: number;
+        taskId: number;
+        status: number;
+    };
+}
+
+// For change status
+export interface ActionChangeIndexTask {
+    type: ActionString.INDEX_CHANGE;
+    payload: {
+        projectId: number;
+        taskId: number;
+        index: number;
     };
 }

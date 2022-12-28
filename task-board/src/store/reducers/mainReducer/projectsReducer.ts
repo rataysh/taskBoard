@@ -7,8 +7,10 @@ import {
     ActionAddCommentTask,
     ActionChangeDescriptionSubTask,
     ActionChangeDescriptionTask,
+    ActionChangeIndexTask,
     ActionChangePrecedenceSubTask,
     ActionChangePrecedenceTask,
+    ActionChangeStatusTask,
     ActionChangeTitleSubTask,
     ActionChangeTitleTask,
     ActionDeleteCommentSubTask,
@@ -38,7 +40,9 @@ type ActionProjects =
     | ActionDeleteCommentTask
     | ActionDeleteCommentSubTask
     | ActionChangePrecedenceTask
-    | ActionChangePrecedenceSubTask;
+    | ActionChangePrecedenceSubTask
+    | ActionChangeStatusTask
+    | ActionChangeIndexTask;
 
 const initialState: IProject[] = dataProject;
 
@@ -385,7 +389,8 @@ export const projectsReducer = (
                                             subTasks: task.subTasks?.map(
                                                 (sub) => {
                                                     return sub.id !==
-                                                        action.payload.subTask.id
+                                                        action.payload.subTask
+                                                            .id
                                                         ? sub
                                                         : {
                                                               ...sub,
@@ -395,6 +400,46 @@ export const projectsReducer = (
                                                           };
                                                 }
                                             ),
+                                        };
+                              }),
+                          };
+                }),
+            ];
+
+        // CHANGE STATUS
+        case ActionString.STATUS_CHANGE:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            status: action.payload.status,
+                                        };
+                              }),
+                          };
+                }),
+            ];
+
+        // CHANGE INDEX
+        case ActionString.INDEX_CHANGE:
+            return [
+                ...state.map((proj) => {
+                    return proj.id !== action.payload.projectId
+                        ? proj
+                        : {
+                              ...proj,
+                              tasks: proj.tasks.map((task) => {
+                                  return task.id !== action.payload.taskId
+                                      ? task
+                                      : {
+                                            ...task,
+                                            indexForDnd: action.payload.index,
                                         };
                               }),
                           };

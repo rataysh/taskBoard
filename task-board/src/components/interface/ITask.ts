@@ -12,6 +12,7 @@ export interface ITask {
     file?: File;
     subTasks?: ITask[];
     comments: IComment[];
+    // indexForDnd?: number;
 }
 
 export interface IComment {
