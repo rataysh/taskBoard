@@ -7,10 +7,11 @@ import {CreateNewTaskModal} from "../components/tasks/popUpWindows/CreateNewTask
 import {TaskBoards} from "../components/tasks/TaskBoards";
 import "../styles/projects.scss";
 import "../styles/createNewModal.scss";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {ITask} from "../components/interface/ITask";
 import {DelConfirmModal} from "../components/DelConfirmModal";
+import {MdKeyboardBackspace} from "react-icons/md";
 
 export const PageTasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
@@ -52,7 +53,19 @@ export const PageTasks: React.FC = () => {
     return (
         <div className='body'>
             <div className='wrapper'>
-                <header className='header'>{project.state.title}</header>
+                <span className='back'>
+                    <Link
+                        to={`/`}
+                        style={{textDecoration: "none"}}>
+                        <MdKeyboardBackspace />
+                    </Link>
+                </span>
+                <header className='header'>
+                    <div className='title'>{project.state.title}</div>
+                    <div className='description'>
+                        {project.state.description}
+                    </div>
+                </header>
                 <main className='main'>
                     <div className='buttonAdd'>
                         <ButtonAdd

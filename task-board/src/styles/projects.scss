@@ -24,13 +24,36 @@ div.body {
         display: flex;
         flex-direction: column;
 
+        span.back{
+            position: absolute;
+            inset: 1rem;
+            font-size: 30px;
+            color: $darker-color;
+        }
+
         header.header {
+            display: flex;
+            flex-direction: column;
             padding-top: 3rem;
             padding-bottom: 1rem;
             font-size: xx-large;
             text-align: center;
             color: white;
             border-bottom: 1px solid white;
+
+            div.title {
+                // color: black;
+                color: $backBoard;
+                // background-color: $backBoard;
+            }
+
+            div.description {
+                margin-top: 2rem;
+                color: $backBoard;
+                font-size: x-large;
+                // color: black;
+                // background-color: $backBoard;
+            }
         }
 
         main.main {

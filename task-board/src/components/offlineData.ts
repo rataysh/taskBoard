@@ -6,7 +6,7 @@ import {ITask, IComment} from "./interface/ITask";
 
 const testTask: ITask[] = [
     {
-        id: 0,
+        id: 1,
         title: "Discussion",
         description:
             "Discuss the architecture of the application with the developers",
@@ -15,21 +15,21 @@ const testTask: ITask[] = [
         status: 0,
         comments: [
             {
-                id: 0,
+                id: 1,
                 text: "First test comment",
                 dateCreate: moment(Date.now()).format(
                     "MMMM Do YYYY, h:mm:ss a"
                 ),
             },
             {
-                id: 1,
+                id: 2,
                 text: "Second comment",
                 dateCreate: moment(Date.now()).format(
                     "MMMM Do YYYY, h:mm:ss a"
                 ),
             },
             {
-                id: 2,
+                id: 3,
                 text: "Third comment",
                 dateCreate: moment(Date.now()).format(
                     "MMMM Do YYYY, h:mm:ss a"
@@ -38,7 +38,7 @@ const testTask: ITask[] = [
         ],
         subTasks: [
             {
-                id: 0,
+                id: 1,
                 title: "UX/UI",
                 description: "Create UX/UI design",
                 dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
@@ -47,7 +47,7 @@ const testTask: ITask[] = [
                 comments: [],
             },
             {
-                id: 1,
+                id: 2,
                 title: "API",
                 description: "API from backend",
                 dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
@@ -58,7 +58,7 @@ const testTask: ITask[] = [
         ],
     },
     {
-        id: 1,
+        id: 2,
         title: "UX/UI",
         description: "Create UX/UI design",
         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
@@ -70,7 +70,7 @@ const testTask: ITask[] = [
         // file?: File,
     },
     {
-        id: 2,
+        id: 3,
         title: "API",
         description: "API from backend",
         dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
@@ -85,7 +85,7 @@ const testTask: ITask[] = [
 
  const secondTestTask: ITask[] = [
      {
-         id: 0,
+         id: 1,
          title: "Meeting with QA",
          description: "Conf call with QA engineer on Monday",
          dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
@@ -93,7 +93,7 @@ const testTask: ITask[] = [
          status: 0,
          comments: [
              {
-                 id: 0,
+                 id: 1,
                  text: "First test comment",
                  dateCreate: moment(Date.now()).format(
                      "MMMM Do YYYY, h:mm:ss a"
@@ -102,7 +102,7 @@ const testTask: ITask[] = [
          ],
          subTasks: [
              {
-                 id: 1,
+                 id: 2,
                  title: "Sub-task for Dev",
                  description: "Create logic",
                  dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
