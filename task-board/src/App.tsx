@@ -10,7 +10,7 @@ const App = () => {
         <>
             <Routes>
                 <Route path='/taskBoard' element={<PageProjects />} />
-                <Route path='/tasks/:id' element={<PageTasks />} />
+                <Route path='/taskBoard/tasks/:id' element={<PageTasks />} />
                 {/* <Route path='tasks/:id/:title' element={<EachTaskPage />} /> */}
             </Routes>
         </>

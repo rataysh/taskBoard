@@ -28,7 +28,7 @@ export const EachProject: React.FC<IEachProjects> = ({project}) => {
                             project.tasks?.length !== 0 ? project.tasks : [],
                     });
                 }}
-                to={`/tasks/${project.id}`}
+                to={`/taskBoard/tasks/${project.id}`}
                 state={project}
                 style={{textDecoration: "none"}}>
                 <div className='eachProjectCard'>
