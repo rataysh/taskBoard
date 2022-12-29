@@ -55,7 +55,7 @@ export const PageTasks: React.FC = () => {
         <div className='body'>
             <div className='wrapper'>
                 <span className='back'>
-                    <Link to={`/`} style={{textDecoration: "none"}}>
+                    <Link to={`/taskBoard`} style={{textDecoration: "none"}}>
                         <MdKeyboardBackspace />
                     </Link>
                 </span>
