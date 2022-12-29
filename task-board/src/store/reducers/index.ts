@@ -1,7 +1,6 @@
 /** @format */
 
 import {combineReducers} from "redux";
-// import {eachTaskReducer} from "./taskBoard/eachTaskReducer";
 import {modalViewReducer} from "./modalViewReducer";
 import {taskBoardDataReducer} from "./taskBoard/taskBoardDataReducer";
 import {projectsReducer} from "./mainReducer/projectsReducer";
@@ -16,7 +15,6 @@ import storage from "redux-persist/lib/storage";
 
 export const rootResucer = combineReducers({
     projects: projectsReducer,
-    // eachTask: eachTaskReducer,
     modalView: modalViewReducer,
     taskBoardData: taskBoardDataReducer,
     subTaskView: subTaskViewReducer,

@@ -1,6 +1,7 @@
 /** @format */
 
 import {ITask} from "../../../components/interface/ITask";
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 enum ActionString {
     GET_ALL_TASKS = "GET_ALL_TASKS",

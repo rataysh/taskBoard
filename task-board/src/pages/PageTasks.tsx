@@ -12,15 +12,10 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {ITask} from "../components/interface/ITask";
 import {DelConfirmModal} from "../components/DelConfirmModal";
 import {MdKeyboardBackspace} from "react-icons/md";
-import {DragDropContext, DropResult} from "react-beautiful-dnd";
-import {useDispatch} from "react-redux";
 
 export const PageTasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
     const project = useLocation();
-
-    const dispatch = useDispatch();
-    const certainProject = useLocation();
 
     // For create new sub-task
     // active modal view
@@ -55,94 +50,52 @@ export const PageTasks: React.FC = () => {
         setEachProjectTasks(eachProject);
     }, [allProject]);
 
-    const onDragEnd = (result: DropResult) => {
-        // console.log(result);
-        const {source, destination} = result;
-        console.log(result);
-
-        if (!destination) return;
-        if (source.droppableId === destination.droppableId && source.index === destination.index) {
-            // if(){}
-            return
-        } 
-        // else if (
-        //     source.droppableId === destination.droppableId &&
-        //     source.index !== destination.index
-        // ) {
-        //         dispatch({
-        //             type: "INDEX_CHANGE",
-        //             payload: {
-        //                 projId: certainProject.state.id,
-        //                 taskId: Number(result.draggableId),
-        //                 index: destination.index,
-        //             },
-        //         });
-        // } 
-        else {
-            dispatch({
-                type: "STATUS_CHANGE",
-                payload: {
-                    projectId: certainProject.state.id,
-                    taskId: Number(result.draggableId),
-                    status:
-                        destination.droppableId === "Queue"
-                            ? 0
-                            : destination.droppableId === "Development"
-                            ? 1
-                            : 2,
-                },
-            });
-        }
-    };
-
     return (
         <div className='body'>
-            <DragDropContext onDragEnd={onDragEnd}>
-                <div className='wrapper'>
-                    <span className='back'>
-                        <Link to={`/`} style={{textDecoration: "none"}}>
-                            <MdKeyboardBackspace />
-                        </Link>
-                    </span>
-                    <header className='header'>
-                        <div className='title'>{project.state.title}</div>
-                        <div className='description'>
-                            {project.state.description}
-                        </div>
-                    </header>
-                    <main className='main'>
-                        <div className='buttonAdd'>
-                            <ButtonAdd
-                                text='Add new task'
-                                setActive={setCreatNewTaskModal}
-                            />
-                            <CreateNewTaskModal
-                                tasks={eachProjectTasks}
-                                active={creatNewTaskModal}
-                                setActive={setCreatNewTaskModal}
-                            />
-                            <CreateNewTaskModal
-                                active={createNewSubTask}
-                                setActive={setCreateNewSubTask}
-                                tasks={eachProjectTasks}
-                                taskIdForSub={taskIdForSub}
-                                subFlag={true}
-                            />
-                            <DelConfirmModal
-                                delItem={false}
-                                active={modalDeleteTask}
-                                setActive={setModalDeleteTask}
-                            />
-                        </div>
-                        <>
-                            <TaskBoards tasks={eachProjectTasks} />
-                        </>
-                    </main>
+            <div className='wrapper'>
+                <span className='back'>
+                    <Link to={`/`} style={{textDecoration: "none"}}>
+                        <MdKeyboardBackspace />
+                    </Link>
+                </span>
+                <header className='header'>
+                    <div className='title'>{project.state.title}</div>
+                    <div className='description'>
+                        {project.state.description}
+                    </div>
+                </header>
+                <main className='main'>
+                    <div className='buttonAdd'>
+                        <ButtonAdd
+                            text='Add new task'
+                            setActive={setCreatNewTaskModal}
+                        />
+                        <CreateNewTaskModal
+                            tasks={eachProjectTasks}
+                            active={creatNewTaskModal}
+                            setActive={setCreatNewTaskModal}
+                        />
+                        <CreateNewTaskModal
+                            active={createNewSubTask}
+                            setActive={setCreateNewSubTask}
+                            tasks={eachProjectTasks}
+                            taskIdForSub={taskIdForSub}
+                            subFlag={true}
+                        />
+                        <DelConfirmModal
+                            delItem={false}
+                            active={modalDeleteTask}
+                            setActive={setModalDeleteTask}
+                        />
+                    </div>
                     <>
-                        <AboutMe />
+                        <TaskBoards tasks={eachProjectTasks} />
                     </>
-                </div>
-            </DragDropContext>
+                </main>
+                <>
+                    <AboutMe />
+                </>
+            </div>
         </div>
     );
 };

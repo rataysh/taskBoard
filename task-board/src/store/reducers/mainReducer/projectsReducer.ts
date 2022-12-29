@@ -426,7 +426,7 @@ export const projectsReducer = (
                 }),
             ];
 
-        // CHANGE INDEX
+        // CHANGE POSITION
         case ActionString.INDEX_CHANGE:
             return [
                 ...state.map((proj) => {
@@ -439,7 +439,7 @@ export const projectsReducer = (
                                       ? task
                                       : {
                                             ...task,
-                                            indexForDnd: action.payload.index,
+                                            index: action.payload.index,
                                         };
                               }),
                           };

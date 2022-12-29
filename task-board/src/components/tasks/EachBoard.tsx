@@ -2,8 +2,6 @@
 
 import React from "react";
 import {Droppable} from "react-beautiful-dnd";
-import {useDispatch} from "react-redux";
-import {useLocation} from "react-router-dom";
 import {ITask} from "../interface/ITask";
 import {EachTask} from "./EachTask";
 
@@ -13,9 +11,6 @@ interface IEachBoard {
 }
 
 export const EachBoard: React.FC<IEachBoard> = ({tasks, title}) => {
-    // const dispatch = useDispatch();
-    // const certainProject = useLocation();
-
     return (
         <Droppable droppableId={title}>
             {(provided) => (
@@ -24,16 +19,7 @@ export const EachBoard: React.FC<IEachBoard> = ({tasks, title}) => {
                     {...provided.droppableProps}
                     ref={provided.innerRef}>
                     <h3>{title}</h3>
-                    {tasks.map((task: ITask, index) => {
-                        // dispatch({
-                        //     type: "INDEX_CHANGE",
-                        //     payload: {
-                        //         projId: certainProject.state.id,
-                        //         taskId: task.id,
-                        //         index: index,
-                        //     },
-                        // });
-
+                    {tasks.sort((a, b) => a.index! > b.index! ? 1 : -1).map((task: ITask, index) => {
                         return (
                             <EachTask task={task} key={task.id} index={index} />
                         );

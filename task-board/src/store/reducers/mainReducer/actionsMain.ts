@@ -22,6 +22,7 @@ export enum ActionString {
     PRECEDENCE_SUB_TASK = "PRECEDENCE_SUB_TASK",
     STATUS_CHANGE = "STATUS_CHANGE",
     INDEX_CHANGE = "INDEX_CHANGE",
+    CREATE_BOARDS = "CREATE_BOARDS",
 }
 
 // Add and delete PROJECT
@@ -173,7 +174,7 @@ export interface ActionChangeStatusTask {
     };
 }
 
-// For change status
+// For change index
 export interface ActionChangeIndexTask {
     type: ActionString.INDEX_CHANGE;
     payload: {

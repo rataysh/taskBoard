@@ -6,6 +6,7 @@ import {BsCalendar} from "react-icons/bs";
 import {MdOutlineDeleteForever} from "react-icons/md";
 import {useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
+// import { useTypedSelector } from "../../hooks/useTypedSelector";
 import {ITask} from "../interface/ITask";
 
 interface IEachTask {
@@ -16,6 +17,8 @@ interface IEachTask {
 export const EachTask: React.FC<IEachTask> = ({task, index}) => {
     const dispatch = useDispatch();
     const certainProject = useLocation();
+
+        // const allProject = useTypedSelector((state) => state.projects);
 
     const deleteTask = () => {
         dispatch({
@@ -45,19 +48,6 @@ export const EachTask: React.FC<IEachTask> = ({task, index}) => {
                 : "#FFA775"
         );
     }, [precedence]);
-
-    // For DND colomn change
-    // useEffect(() => {
-    //     // console.log(index);
-    //     dispatch({
-    //         type: "INDEX_CHANGE",
-    //         payload: {
-    //             projId: certainProject.state.id,
-    //             taskId: task.id,
-    //             index: index,
-    //         },
-    //     });
-    // }, []);
 
     return (
         <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
