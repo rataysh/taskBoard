@@ -83,7 +83,7 @@ export const EachTaskModal: React.FC<IEachTaskModal> = ({
                             task={task!}
                         />
 
-                        {/* Cheked this is sub-task or task */}
+                        {/* Cheked this is sub-task or not */}
                         {subTaskFlag ? (
                             ""
                         ) : (

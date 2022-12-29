@@ -1,12 +1,12 @@
 /** @format */
 
+import moment from "moment";
 import React, {useEffect, useState} from "react";
 import {Draggable} from "react-beautiful-dnd";
 import {BsCalendar} from "react-icons/bs";
-import {MdOutlineDeleteForever} from "react-icons/md";
+import {MdDragIndicator, MdOutlineDeleteForever} from "react-icons/md";
 import {useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
-// import { useTypedSelector } from "../../hooks/useTypedSelector";
 import {ITask} from "../interface/ITask";
 
 interface IEachTask {
@@ -17,8 +17,6 @@ interface IEachTask {
 export const EachTask: React.FC<IEachTask> = ({task, index}) => {
     const dispatch = useDispatch();
     const certainProject = useLocation();
-
-        // const allProject = useTypedSelector((state) => state.projects);
 
     const deleteTask = () => {
         dispatch({
@@ -73,6 +71,10 @@ export const EachTask: React.FC<IEachTask> = ({task, index}) => {
                             deleteTask();
                         }}
                     />
+
+                    <span className='dnd'>
+                        <MdDragIndicator />
+                    </span>
                     <h6 style={{backgroundColor: colorPrecedence}}>
                         {task?.precedence + " priority"}
                     </h6>
@@ -81,7 +83,7 @@ export const EachTask: React.FC<IEachTask> = ({task, index}) => {
                     <article>
                         <p>
                             <BsCalendar />
-                            {task.dateCreate}
+                            {moment(task?.dateCreate).format("DD-MMM-YYYY")}
                         </p>
                         <p>
                             <span>Sub-tasks:</span>

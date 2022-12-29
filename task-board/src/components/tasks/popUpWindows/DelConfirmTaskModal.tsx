@@ -4,18 +4,15 @@ import React from "react";
 import {GrClose} from "react-icons/gr";
 import {useDispatch} from "react-redux";
 import "../../../styles/delProjModal.scss";
-// import {IProject} from "../interface/IProject";
 import {ITask} from "../../interface/ITask";
 
 interface IDelConfirmTaskModal {
-    // project: IProject;
     task: ITask;
     active: boolean;
     setActive: (active: boolean) => void;
 }
 
 export const DelConfirmTaskModal: React.FC<IDelConfirmTaskModal> = ({
-    // project,
     task,
     active,
     setActive,

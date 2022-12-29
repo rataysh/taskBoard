@@ -8,7 +8,7 @@ import {checkName} from "../../../logic/checkName";
 import {newTask} from "../../../logic/newTask";
 import {ITask} from "../../interface/ITask";
 import {CreateNewTaskComponent} from "./CreateNewTaskComponent";
-// import "../../../styles/createNewModal.scss";
+
 
 interface ICreateNewTaskModal {
     active: boolean;
@@ -29,6 +29,7 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
     const [description, setDescription] = useState<string>("");
     const [precedence, setPrecedence] = useState<string>("low");
     const [status, setStatus] = useState<number>(0);
+    
     // check condition for UNLOCK button "Creeat new project"
     const [valid, setValid] = useState<boolean>(false);
 
@@ -54,7 +55,6 @@ export const CreateNewTaskModal: React.FC<ICreateNewTaskModal> = ({
     };
 
     const createNewTask = (subFlag: boolean | undefined) => {
-        // console.log(tasks.filter((task) => task.id === taskIdForSub)[0].subTasks);
         subFlag !== undefined && subFlag
             ? dispatch({
                   type: "ADD_SUB_TASK",

@@ -66,7 +66,6 @@ export const EactTaskComponentDescription: React.FC<
                 <MdEditNote
                     className='changeIcon'
                     onClick={() => {
-                        // console.log(refDescription);
                         refDescription !== null &&
                             refDescription.current?.focus();
                     }}

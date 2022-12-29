@@ -3,10 +3,8 @@
 import React, {useEffect, useState} from "react";
 import "../../styles/tasksBoard.scss";
 import {ITask} from "../interface/ITask";
-// import {EachTask} from "./EachTask";
 import {EachTaskModal} from "./popUpWindows/eactTask/EachTaskModal";
 import {EachBoard} from "./EachBoard";
-// import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
@@ -39,7 +37,6 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
     const [development, setDevelopment] = useState<ITask[]>([]);
     const [done, setDone] = useState<ITask[]>([]);
     useEffect(() => {
-        // createIndex();
         createInd(setQueue, 0);
         createInd(setDevelopment, 1);
         createInd(setDone, 2);
@@ -81,7 +78,6 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
         refreshInd(setDevelopment, 1);
         refreshInd(setDone, 2);
     }, [allTask.length]);
-
 
     const onDragEnd = (result: DropResult) => {
         const {source, destination} = result;
@@ -191,14 +187,6 @@ export const TaskBoards: React.FC<ITaskBoards> = ({tasks}) => {
         <DragDropContext onDragEnd={onDragEnd}>
             <div>
                 <div className='allBoard'>
-                    {/* <button
-                        style={{zIndex: 50}}
-                        onClick={() => {
-                            console.log(queue, development, done);
-                            // console.log(tasks.filter((task) => task.status === 0));
-                        }}>
-                        TTTTTTTTTTT
-                    </button> */}
                     <EachBoard title={"Queue"} tasks={queue} />
                     <EachBoard title={"Development"} tasks={development} />
                     <EachBoard title={"Done"} tasks={done} />

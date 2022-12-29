@@ -12,6 +12,7 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {ITask} from "../components/interface/ITask";
 import {DelConfirmModal} from "../components/DelConfirmModal";
 import {MdKeyboardBackspace} from "react-icons/md";
+import moment from "moment";
 
 export const PageTasks: React.FC = () => {
     const [creatNewTaskModal, setCreatNewTaskModal] = useState<boolean>(false);
@@ -64,6 +65,10 @@ export const PageTasks: React.FC = () => {
                         {project.state.description}
                     </div>
                 </header>
+                {/* <button style={{zIndex: 40}}
+                    onClick={() => {
+                        console.log(moment("20221225").diff(moment("20221220"), "days"));
+                    }}>ahsffffffffffffffff</button> */}
                 <main className='main'>
                     <div className='buttonAdd'>
                         <ButtonAdd

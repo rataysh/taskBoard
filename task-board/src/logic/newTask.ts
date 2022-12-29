@@ -17,8 +17,9 @@ export const newTask = (
         id: id,
         title: name,
         description: checkDescription(description),
-        dateCreate: moment(Date.now()).format("DD-MMM-YYYY"),
+        dateCreate: moment(Date.now()).toString(),
         precedence: precedence,
         status: status, // 0 - Queue 1 - Development 2 - Done
+        timeDuringWork: "0", // template solution
     };
 };

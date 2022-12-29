@@ -24,11 +24,24 @@ div.body {
         display: flex;
         flex-direction: column;
 
-        span.back{
+        span.back {
             position: absolute;
             inset: 1rem;
             font-size: 30px;
             color: $darker-color;
+
+            // &:hover {
+            //     &:active {
+            //         opacity: 0.7;
+            //         color: white;
+            //     }
+
+            //     &:before {
+            //         opacity: 1;
+            //         right: 0;
+            //         text-indent: 0px;
+            //     }
+            // }
         }
 
         header.header {

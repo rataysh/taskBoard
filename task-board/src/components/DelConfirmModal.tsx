@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import "../styles/delProjModal.scss";
 import {IProject} from "./interface/IProject";
-import {ITask} from "./interface/ITask";
+
 
 interface IDelConfirmModal {
     delItem: IProject | false;

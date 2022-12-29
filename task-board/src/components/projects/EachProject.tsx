@@ -37,7 +37,6 @@ export const EachProject: React.FC<IEachProjects> = ({project}) => {
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            // e.nativeEvent.stopImmediatePropagation();
                             setActive(!active);
                         }}
                     />
