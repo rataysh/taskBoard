@@ -19,13 +19,19 @@ export const EachBoard: React.FC<IEachBoard> = ({tasks, title}) => {
                     {...provided.droppableProps}
                     ref={provided.innerRef}>
                     <h3>{title}</h3>
-                    {tasks.sort((a, b) => a.index! > b.index! ? 1 : -1).map((task: ITask, index) => {
-                        return (
-                            <EachTask task={task} key={task.id} index={index} />
-                        );
-                    })}
+                    {tasks
+                        .sort((a, b) => (a.index! > b.index! ? 1 : -1))
+                        .map((task: ITask, index) => {
+                            return (
+                                <EachTask
+                                    task={task}
+                                    key={task.id}
+                                    index={index}
+                                />
+                            );
+                        })}
 
-                    {/* {provided.placeholder} */}
+                    {provided.placeholder}
                 </div>
             )}
         </Droppable>

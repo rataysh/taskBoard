@@ -51,6 +51,7 @@ export const EachTask: React.FC<IEachTask> = ({task, index}) => {
         <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
             {(provided, snapshot) => (
                 <div
+                    className="board"
                     onClick={() => {
                         dispatch({
                             type: "POP_UP_OPEN_EACH_TASK",
@@ -62,7 +63,11 @@ export const EachTask: React.FC<IEachTask> = ({task, index}) => {
                     }}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
-                    {...provided.dragHandleProps}>
+                    {...provided.dragHandleProps}
+                    style={{
+                        backgroundColor: snapshot.isDragging ? "#39bae8" : "",
+                        ...provided.draggableProps.style,
+                    }}>
                     <MdOutlineDeleteForever
                         className='del'
                         onClick={(e) => {
