@@ -39,7 +39,31 @@
 
 #### - Change status with drag and drop
 ![dnd](https://user-images.githubusercontent.com/88318279/210102100-d48b50bb-1fa6-4e87-8af9-8936ad0c319e.png)
-
 #### - Mobile view
 ![photo_2022-12-30_22-58-23](https://user-images.githubusercontent.com/88318279/210101712-53260dbb-b649-4a2c-afc7-b3952759b4a7.jpg)
 ![photo_2022-12-30_22-58-20](https://user-images.githubusercontent.com/88318279/210101723-fcea4464-759c-4957-a969-bb8ed4493342.jpg)
+
+### 4) Open each task and view all information about it
+![task](https://user-images.githubusercontent.com/88318279/210102563-129bd53a-bd47-4f29-9a4c-1976f8419068.png)
+
+### 5) You can also change:
+#### - Priority
+![priority](https://user-images.githubusercontent.com/88318279/210102790-3b05b383-5af0-4cd2-8cd3-c899f2d49f5c.png)
+
+#### - Task name
+![changeName](https://user-images.githubusercontent.com/88318279/210102862-476be122-fa9c-481e-a18d-9376056c0c68.png)
+
+#### - Task description
+![change_description](https://user-images.githubusercontent.com/88318279/210102996-79c79383-2baa-4c24-87be-7ab95847ebf9.png)
+
+#### - Create/delete sub-tasks
+![create-subtask](https://user-images.githubusercontent.com/88318279/210103186-c55480e3-a211-4a37-87f5-11cc690e0951.png)
+![subtask_result](https://user-images.githubusercontent.com/88318279/210103209-203dbeaa-01e0-4251-8466-348609c1e70c.png)
+
+#### - Write/delete a comments on the task
+![write comments](https://user-images.githubusercontent.com/88318279/210103439-08a38ef1-87d3-48d4-95b7-5edd944e7981.png)
+![comments_result](https://user-images.githubusercontent.com/88318279/210103449-7ed623fb-a444-4292-a6d8-f14f868193bd.png)
+ 
+## And you can do all this with subtasks
+
+
