@@ -31,7 +31,7 @@
 ### 2) Each project has its own list of tasks
 ![task board](https://user-images.githubusercontent.com/88318279/210101137-8de7b98d-dafb-4b60-b5ff-c162486c1654.png)
 #### - Mobile view
-![photo_2022-12-30_22-50-08](https://user-images.githubusercontent.com/88318279/210101515-3f2aaecd-c3d7-40ef-839b-06a80ebf0c4c.jpg)
+![photo_2022-12-30_22-55-15](https://user-images.githubusercontent.com/88318279/210102170-6e567e69-b23e-4d16-98e8-a1bb85767a4d.jpg)
 
 ### 3) Here you can:
 #### - Create/delete task
