@@ -41,3 +41,12 @@ Create Projects and Task
 
 ### Responsive design
 
+
+<div style="display:flex">
+  <img src="https://user-images.githubusercontent.com/88318279/221943094-f6766c9d-889a-49b0-b441-2575bdac8d37.jpg"  alt="mobile1" height="600">
+  <img src="https://user-images.githubusercontent.com/88318279/221943099-5e2c8b2a-8880-439f-8dd7-e4c700e34e86.jpg"  alt="mobile2" height="600">
+  <img src="https://user-images.githubusercontent.com/88318279/221943102-5311a520-2f75-460d-95d6-01ce3ad2fbdf.jpg" alt="mobile3" height="600">
+  <img src="https://user-images.githubusercontent.com/88318279/221943105-a3de6504-35d8-4f02-9c54-33a15de21f9b.jpg" alt="mobile4" height="600">
+</div>
+
+
