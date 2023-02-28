@@ -18,14 +18,11 @@
 - Material UI (some componets)
 
 
-
 # In this kind of Trello task board you can:
-Create Projects and Task
 
 ### Create projects and tasks
 
 ![createProjAndTask](https://user-images.githubusercontent.com/88318279/221935338-01ff8031-4d83-4fb5-852f-064a2a42a360.gif)
-
 
 #### Manage tasks
 
@@ -40,7 +37,6 @@ Create Projects and Task
 ![localStorage](https://user-images.githubusercontent.com/88318279/221936572-1987045e-4c9f-4b04-b873-f0f6ec820f66.gif)
 
 ### Responsive design
-
 
 <div style="display:flex">
   <img src="https://user-images.githubusercontent.com/88318279/221943094-f6766c9d-889a-49b0-b441-2575bdac8d37.jpg"  alt="mobile1" height="600">
